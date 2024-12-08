@@ -1,0 +1,14 @@
+ul {
+    background-color: aqua;
+    padding: 10px;
+}
+
+ul li {
+    color: red;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.titleStyle {
+    color: purple;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

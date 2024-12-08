@@ -1,0 +1,17 @@
+/* .pagination--cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1em;
+  height: 20em;
+  background-color: red;
+}
+
+.pagination button {
+  height: 2em;
+} */
+
+.pagination--cont {
+  display: flex;
+  justify-content: space-between;
+}
