@@ -11,7 +11,7 @@ function App() {
 
   const [count, setCount] = useState(0)
 
-  /* scriviamo dell'html ma in realtà poi viene costruito come TYPESCRIPT,  */
+  /* scriviamo dell'html ma in realtà poi viene costruito come TYPESCRIPT */
   return (
     <>
 

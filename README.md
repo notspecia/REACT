@@ -11,6 +11,7 @@
 
 
 ## Struttura del progetto React + Vite
+```html
 my-app/
 ├── node_modules/          # `Dipendenze installate` automaticamente (non da modificare) tramite npm i
 ├── public/                # File pubblici statici (robots.txt, sitemaps), anche i logo, fiveicon...
@@ -18,7 +19,7 @@ my-app/
 ├── src/                   # !Codice sorgente principale, qui troviamo tutto il codice
 │   ├── assets/            # Risorse statiche specifiche (es: immagini, icone)
 │   ├── App.css            # Stili CSS per il componente principale App
-│   ├── App.tsx            # Componente principale dell'applicazione React
+│   ├── App.tsx            # Componente principale del applicazione React
 │   ├── index.css          # File di stili globali (applicati a tutto il progetto)
 │   ├── main.tsx           # `Punto di ingresso dell'app React` (monta App su index.html)
 │   └── vite-env.d.ts      # Tipi TypeScript generati automaticamente da Vite
@@ -32,26 +33,26 @@ my-app/
 ├── tsconfig.json          # Configurazione principale di TypeScript
 ├── tsconfig.node.json     # Configurazione TypeScript per Node.js
 └── vite.config.ts         # Configurazione di Vite
-
+```
 
 
 ---
 
 
-
-## Lifecycle
+ 
+# Lifecycle dei componenti
 Sapere il ciclo di vita di un componente è fondamentale nello sviluppo di applicazioni, in particolare in contesti come React, dove i componenti sono modulari e possono subire vari cambiamenti nel corso della loro esistenza nel DOM. 
 Il ciclo di vita ti permette di gestire eventi, risorse, e aggiornamenti in modo efficiente, evitando errori e memory leaks.
 
- **MOUNT**
+ **MOUNT** <br>
  facciamo una connessione socket e aggiungiamo un event listener al DOM (chiamata del socket monta la connessione)
  -----------------------------------------------------------------
 
- **UPDATE**
+ **UPDATE** <br>
  socket listening/update (questo flusso smette di aggiornarsi quando l'utente smette di interagire con la socket)
  -----------------------------------------------------------------
 
- **UNMOUNT**
+ **UNMOUNT** <br>
  dealoccare la comunicazione della connessione socket (qui chiudiamo la connessione definitivamente con la socket)
  se non l'andassi a distruggere/smontare rimane ancora aperta
  -----------------------------------------------------------------
@@ -78,7 +79,7 @@ Liberare le risorse per evitare memory leaks, ad esempio:
 
 
 
-# src/ la folder + importante fra tutti
+# src/ la folder padre dell'applicazione!
 
 ### introduzione a cosa serve
 **il progetto viene costruito effettivamente qui dentro**, qui c'è tutto il codice che scriviamo per appunto creare pagine e applicazioni, tutto quello che c'è fuori (package.json, index.html. eslint.config...) sono solo delle preparazioni per il progetto, le risorse...
@@ -117,7 +118,7 @@ esempio con l'html, senza componenti usando html normale, dovremmo andare a crea
 ### cos'è quindi un componente?
 è un file a parte, che definisce una volta IL NOSTRO COMPONENTE, e lo importiamo dove vogliamo, e utilizzarlo di conseguenza dove vogliamo! sono riutilizzabili, proviamo a creare nel progetto test, un componente menu da utilizzare + volte!
 
-- in react i component NON sono HTML, ma sono `funzioni typescript` che usa delle cose al suo interno, che poi generano e ritornano del'HTML tramite il `return()`
+- in react i componenti NON sono HTML, ma sono `funzioni typescript` che usa delle cose al suo interno, che poi generano e ritornano del'HTML + TS tramite il `return()`
 
 
 ### Creazione di componenti
@@ -287,6 +288,28 @@ importante creare un type di supporto tramite un file `model.ts` che va a defini
 
 
 
+## Rendering di liste
+Il rendering di liste è un concetto fondamentale in React (e nella programmazione in generale) che consente di `mostrare dinamicamente una serie di elementi basati su dati strutturati`, come array o oggetti. In un'applicazione React, il rendering di liste viene utilizzato per creare componenti ripetuti senza doverli scrivere manualmente.
+
+un esempio di base su come implementare rendering di liste:
+```tsx
+const products = ['Laptop', 'Smartphone', 'Tablet'];
+
+function App() {
+  return (
+    <ul>
+      {products.map((product) => (
+        <li key={product}>{product}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+
+---
+
+
 ## Gestione degli Eventi
 
 per adesso gestione esclusivamente di cosa succede quando premiamo un bottone e in cui possiamo decidere di gestire un'evento, un esempio banale di un evento in linea al click del bottone con funzione arrow anonima che contiene il codice che verrà eseguito al click del bottone:
@@ -330,7 +353,7 @@ import React, { useState } from 'react';
 
 **Cosa fa useState?**
 - `state`: il valore corrente dello stato.
-- `setState`: una funzione per aggiornare lo stato.
+- `setState`: una funzione che permette di aggiornare lo stato, in questo caso "state".
 - `initialValue`: il valore iniziale dello stato.
 **Caratteristiche principali**
 Ogni chiamata a useState gestisce un pezzo indipendente di stato.
@@ -347,31 +370,45 @@ const [state, setState] = useState(initialValue);
 
 
 
-## comunicazione Child -> Parent
+## Comunicazione Child -> Parent
+come possiamo mandare i DATI da un FIGLIO a un componente PADRE, fino ad adesso abbiamo passato i dati dal padre al figlio tramite i props all'interno di `App.tsx`, proviamo tramite un form che va ad aggiungere una CARD alla nostra lista delle città (creazione di un componente apposito per creare delle card).
+
+come facciamo a fare uscire questi dati dal Child del form?
+- dobbiamo rendere l'array con gli oggetti delle varie ciità uno STATO per permettere che si aggiorni con la pagina correttamente senza che i dati vadano persi
+- rimettiamo come state iniziale le vecchie città usate tramite le props, quelle successive verranno aggiunte in `cities[] con setCities()`
+
+ci permette questa funzione di accettare una CITTA IN ENTRATA che ci verrà passata e la inseriamo all'interno delle cities[] tenendo memoria anche dello stato precedente di esso!
+```tsx
+const addCity = (city) => setCities([...cities, city]);
+```
+
+**come chiamare questa funzione dal figlio CardForm.tsx (FIGLIO)?**
+ovviamente il figlio CardForm non è in grado di gestire lo stato del genitore App.tsx, dobbiamo passare la funzione come riferimento e dire a CardForm di chiamare questa funzione che aggiunge le città, lo facciamo tramite i `prop`
+
+
+---
 
 
 
-
-
-
-
-
-
-## Hooks
- I React Hooks sono una funzionalità introdotta in React 16.8 che permette di utilizzare lo stato e altre funzionalità di React nei componenti funzionali, senza dover scrivere classi.
-
-
-
-2. **UseEffect(() => { })**
+## Utilizzo di useEffect (() => { })
 lo state è qualcosa che invoco, l'effetto è qualcosa che viene eseguito quando viene succede qualcosa
 un effetto accade e basta, non va a modificare lo stato del componente
 
 `UseEffect` viene eseguito OGNI MOUNT del componente, quindi anche se riaggiorniamo la pagina verrà eseguito sempre al suo mount,
-- se io invece registro anche delle variabili nelle [], quando io aggiorno lo stato (click del bottone) vengono eseguti ancora
+- se io invece registro anche degli altri stati del componente nelle [], quando io aggiorno lo stato (click del bottone) vengono eseguti ancche quelli correlati ad esso
 - se lascio vuote le [] senza delle dipendenze, l'useEffect verrà eseguito SOLO AL MONATAGGIO DEL COMPONENTE
 ```js
  UseEffect(() => console.log("count updated whit useEffect"), [count])
 ```
+
+
+
+---
+
+
+
+## Hooks
+I React Hooks sono una funzionalità introdotta in React 16.8 che permette di utilizzare lo stato e altre funzionalità di React nei componenti funzionali, senza dover scrivere classi.
 
 
 ## [Custom Hooks](https://usehooks.com/)
@@ -411,30 +448,7 @@ SUCCESSIVAMENTE seguire la [guida](https://reactrouter.com/start/library/install
 
 
 
-
-
-
-## intro a Vite:
-Vite è un moderno build tool (strumento di sviluppo) progettato per offrire una configurazione minima e un'elevata velocità 
-di esecuzione per i progetti web.  Il suo nome significa "velocità" in francese, e l'obiettivo principale è 
-- rendere lo sviluppo più rapido ed efficiente rispetto ai tradizionali strumenti come Webpack o Parcel.
-
-### Caratteristiche principali di Vite:
-- Compatibile con React, Vue, Svelte, Preact e altri framework.
-    - Offre modelli preconfigurati per molti framework tramite comandi come npm create vite@latest.
-
-
-
-
-
-
-
-
-
-
-# recupero di codice e appunti in classe
-
-## recap del progetto pokedex con REACT
+## recap del progetto pokedex con REACT fatto in classe!
 - importiamo il font che arrviva da google da una libreria all'interno del `main.tsx`, dobbiamo usare il @ts-expect-errror sotto commento per non causare problemi con esso
 ```js
 // @ts-expect-error

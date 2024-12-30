@@ -9,6 +9,7 @@ function NavBar() {
     const today: Date = new Date();
     const logo: string = "/vite.svg";
 
+    // ritorniamo il jsx da poi integrare dentro <App> che è il component principale, usiamo anche delle varibile per comporre il tutto
     return (
         <>
             <h4 style={{ fontFamily: "Verdana" }}>ciao oggi è il {today.toDateString()} e sono le {today.getHours()} </h4>
