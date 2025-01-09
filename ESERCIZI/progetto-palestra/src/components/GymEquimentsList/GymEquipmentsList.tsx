@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
 import GymEquipment from "../GymEquipment/GymEquipment";
-import ReservationEquipment from "../ReservationEquipment/ReservationEquipment";
-
 import { type Equipment } from "../../models/Equipment.model";
 
+import ReservationEquipment from "../ReservationEquipment/ReservationEquipment";
 
 
 
@@ -15,6 +14,7 @@ function GymEquipmentsList({ equipments }: { equipments: Equipment[] }) {
     //* stato per tenere traccia dell'equipment da palestra selezionato dentro il figlio `GymEquipment.tsx` da mostrare nella modale `ReservationEquipment.tsx`!
     //* inizialmente lo stato dell'equipment selzionato sarà null, se poi verrà selezionato cambierà con esso permettendo di mostrare la modale
     const [selectedEquipment, setSelectedEquipment] = useState<Equipment | null>(null);
+
 
     // FUNZIONE DI CALLBACK "openModal": click del bottone che permetterà di selezionare quell'equipment che verrà passato come parametro
     // cambierà lo stato del selectedEquipment e verrà mostrata la modale con successo dato con all'interno i dati di quell'equipment

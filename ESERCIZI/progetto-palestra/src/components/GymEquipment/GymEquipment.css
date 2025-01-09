@@ -1,6 +1,7 @@
 /* style to manage the :hover effects on the cards equipements */
 
-.equipment {
+.equipment,
+button {
     transition: all 0.3s ease-in-out;
 }
 

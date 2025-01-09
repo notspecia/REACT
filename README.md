@@ -427,6 +427,155 @@ li creiamo in una cartella apposita dentro src/ -> `hooks/`
 
 
 
+## React Routing
+
+Il routing in React ci consente di "instradare" i nostri utenti all'interno dell'applicazione:
+- In un sito vanilla, questo sarebbe equivalente a creare diverse pagine HTML (ad esempio: `home.html`, `about.html`, `contacts.html`) tra cui è possibile navigare.
+- In React, essendo un'applicazione SPA (Single Page Application), non cambiamo mai realmente pagina. Anche se "instradiamo" l'utente su un'altra parte dell'applicazione, la pagina rimane tecnicamente la stessa.
+
+Grazie al **routing**, possiamo simulare la navigazione tra pagine diverse senza ricaricare il browser.
+
+### Come si applica il routing in React
+
+### 1. Installazione di React Router[https://reactrouter.com/]
+React Router è *la libreria* che ci consente di gestire il routing in React, con tanto di documentazione e informazioni in +
+Esegui questo comando per installarlo:
+
+```bash
+npm install react-router-dom
+```
+
+### 2. Configurare il Router
+Nel file principale (es. `App.tsx`), importa i componenti necessari da `react-router-dom`:
+
+```tsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+```
+
+Ora puoi configurare le tue rotte:
+
+```tsx
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contacts" element={<Contacts />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+### 3. Creare le Pagine
+Ogni "pagina" dell'applicazione sarà un componente React, Esempio:
+
+#### Home.tsx
+```tsx
+const Home: React.FC = () => {
+  return <h1>Benvenuti nella Home Page</h1>;
+};
+
+export default Home;
+```
+
+#### About.tsx
+```tsx
+const About: React.FC = () => {
+  return <h1>Pagina About</h1>;
+};
+
+export default About;
+```
+
+#### Contacts.tsx
+```tsx
+const Contacts: React.FC = () => {
+  return <h1>Contatti</h1>;
+};
+
+export default Contacts;
+```
+
+### 4. Collegare le Rotte
+Usa il componente `Link` di React Router per creare collegamenti tra le pagine, implementazione tramite un componente `Navbar.tsx` in cui i path sia dei <Routes> che quelli di <NavBar> devono corrispondere per creare un collegamento:
+
+#### NavBar.tsx
+```tsx
+import { Link } from 'react-router-dom';
+
+const NavBar: React.FC = () => {
+  return (
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contacts">Contacts</Link></li>
+      </ul>
+    </nav>
+  );
+};
+
+export default NavBar;
+```
+
+### 5. Passaggio di Parametri
+React Router permette anche di passare parametri tramite l'URL.
+
+#### Rotta con Parametro
+```tsx
+<Route path="/user/:id" element={<UserProfile />} />
+```
+
+#### Accesso al Parametro
+Nel componente `UserProfile`:
+```tsx
+import { useParams } from 'react-router-dom';
+
+const UserProfile: React.FC = () => {
+  const { id } = useParams();
+
+  return <h1>Profilo Utente: {id}</h1>;
+};
+
+export default UserProfile;
+```
+
+### 6. Gestione delle Rotte Non Trovate
+Puoi gestire una pagina "Not Found" per rotte inesistenti:
+
+```tsx
+<Route path="*" element={<NotFound />} />
+```
+
+#### NotFound.tsx
+```tsx
+const NotFound: React.FC = () => {
+  return <h1>404 - Pagina non trovata</h1>;
+};
+
+export default NotFound;
+```
+
+### Vantaggi del Routing in React
+
+- **Navigazione senza ricaricare la pagina**: migliora le prestazioni e l'esperienza utente.
+- **Gestione delle rotte dinamiche**: puoi creare URL personalizzati e gestire parametri facilmente.
+- **Componentizzazione**: ogni pagina è un componente React separato, rendendo il codice modulare e riutilizzabile.
+
+React Router è un potente strumento che rende la gestione della navigazione nelle SPA semplice e intuitiva.
+
+
+
+
+
+---
+
+
+
 ## [React router](https://reactrouter.com/)
 è una libreria molto utilizzata per la gestione del routing nelle applicazioni React. Consente agli sviluppatori di creare e gestire la navigazione all'interno di un'app React.
 
@@ -434,7 +583,7 @@ per utilizzarlo dobbiamo installarlo sulla nostra macchina tramite il comando `n
 
 SUCCESSIVAMENTE seguire la [guida](https://reactrouter.com/start/library/installation) per andare intergrare la libreria all'interno del nostro progetto react.
 
-- se prima avevamo la nostra APP con i nsotri componenti dentro
+- se prima avevamo la nostra APP con i nostri componenti dentro
 - andremo ad avere un APP che al suo interno avrà un oggetto di ROTTE e all'interno di esso avrà delle ROTTE in cui in base all'url andremo a splittare le 2 pagine e a seconda di esso andrà a scegliere quale pagina rendirizzare (ogni pagina avrà i suoi componenti che veranno montati di conseguenza quando visualizzo la pagina!)
 
 

@@ -1,79 +1,64 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// import GymEquipmentApi from './services/GymEquipment.api'; // richiesta fetch da un file esterno
-import GymEquipmentsList from './components/GymEquimentsList/GymEquipmentsList';
+import fetchEquipments from './services/GymEquipment.api'; // funzione con promise per la richiesta HTTP degli equipments
 import { type Equipment } from './models/Equipment.model';
 
-import './App.css';
+import NavBar from './components/NavBar/NavBar';
+import Home from './pages/Home/Home';
+import EquimentsBooked from './pages/EquipmentsBooked/EquipmetsBooked';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import NotFound from './pages/NotFound/NotFound';
 
 
 
+
+/* App principale contenente il Routing delle altre pagine della SPA: HOME, EQUIPMENTS BOOKED, LOGIN, REGISTER
+navigando tra di esse grazie a un componente NavBar.tsx con lo stesso path delle Routes */
 function App() {
 
+  //* prendiamo tramite fetch GET, gli equipments della palestra da passare al Route <Home></Home>
+  const [equipments, setEquipments] = useState<Equipment[]>([]);
 
-  //* data di prova perchè la fetch non funziona ancora con degli item di prova da palestra DA SOSTITUIREEE
-  const [data, setData] = useState<Equipment[]>([
-    {
-      name: "Manubri",
-      claim: "Ideale per allenamenti di forza, con peso regolabile da 5kg a 40kg.",
-      icon: "./assets/gym-icon.png",
-      image: "https://www.fitnessway.it/wp-content/uploads/2022/12/deltoidi-alzate.jpg",
-      pricePerMinute: 0.15
-    },
-    {
-      name: "Yoga Ball",
-      claim: "Palla gonfiabile progettata per esercizi di equilibrio, stretching e rafforzamento del core.",
-      icon: "./assets/gym-icon.png",
-      image: "https://m.media-amazon.com/images/I/51yubMFVBUL._AC_UF1000,1000_QL80_.jpg",
-      pricePerMinute: 0.10
-    },
-    {
-      name: "Tapis Roulant",
-      claim: "Perfetto per il cardio, con velocità regolabile e inclinazione automatica.",
-      icon: "./assets/gym-icon.png",
-      image: "https://contents.mediadecathlon.com/m14376952/k$6069f1c7a630977c5c328dad26d03b11/picture.jpg",
-      pricePerMinute: 0.50
-    }, {
-      name: "Cyclette",
-      claim: "Ottima per allenamenti intensivi per il fiato, con resistenza regolabile.",
-      icon: "./assets/gym-icon.png",
-      image: "https://newvitality.it/1658-large_default/-r44-diamond-cyclette-recumbent-orizzontale.jpg",
-      pricePerMinute: 0.40
-    }, {
-      name: "Lat machine",
-      claim: "Concepita soprattutto per eseguire delle trazioni verticali o pull-down, utili nell'allenamento della schiena.",
-      icon: "./assets/gym-icon.png",
-      image: "https://www.my-personaltrainer.it/2020/10/07/trazioni-alla-lat-machine-cosa-c-e-da-sapere--orig.jpeg",
-      pricePerMinute: 0.35
-    }, {
-      name: "Panca Multifunzionale",
-      claim: " Perfetta per esercizi con bilanciere, addominali e allenamento completo.",
-      icon: "./assets/gym-icon.png",
-      image: "https://www.marbo-sport.pl/data/gfx/pictures/large/8/2/28828_1.jpg",
-      pricePerMinute: 0.25
-    }
-  ]);
+  //* in caso la fetch GET degli equipments non va a buon fine, verrà settato un errore da mostrare nella Route <Home></Home>
+  const [error, setError] = useState<string | null>(null);
 
 
-  // IMPLEMENTARE LA GESTIONE DEGLI ERRORI MEGLIO, RISOLVERE API ERRATA DAL SERVER
-  // useEffect(() => {
-  //   fetch("https://d3660g9kardf5b.cloudfront.net/api/equipment")
-  //     .then((response) => response.json())
-  //     .then((data) => { console.log(data); setData(data); })
-  //     .catch((error) => console.error("errore fetch dell'equipment" + error));
-  // }, []);
+  // al montaggio dell'App.tsx sarà avviato l'useEffect che fa una richiesta HTTP fetch per ricevere gli equipments per poi passarli al Route <Home></Home>
+  useEffect(() => {
+
+    // richiamiamo la chiamata fetch che risolve la Promise che è stata restituita, con i dati equipments / errori
+    // 01. i dati ricevuti con successo saranno settati tramite il setEquipments cambiano lo stato dell'App.tsx
+    // 02. gli errori ricevuti dal fallimento della fetch o stato di errore, gestiti tramite lo stato apposito di App.tsx setError
+    fetchEquipments()
+      .then((equipments) => { setEquipments(equipments); console.log(equipments) })
+      .catch(() => setError(`Errore nel caricamento degli equipments! riprovare pià tardi!`)); // settiamo lo state "errore"
+  }, []);
+
 
 
   return (
     <>
-      <h1 className="text-7xl font-extrabold text-center mt-10 mb-24">Gym Equipment</h1>
-      {/* andiamo a mostrare come elmento principale il componente che riceve gli equipments, che verranno
-      mappati sottoforma di lista mostrando ognuno singolarmente */}
-      <div className="flex flex-wrap justify-around gap-y-14">
-        <GymEquipmentsList equipments={data} />
-      </div>
+      <Router>
+        {/* wrap dell'applicazione per abilitare il routing tra le pagine della SPA combinato con una Navbar.tsx */}
+        <NavBar />
+        <Routes>
+          {/* route principale che mostra la pagina Home */}
+          <Route path="/" element={<Home equipments={equipments} error={error} />} />
+          {/* route per la pagina degli equipment prenotati */}
+          <Route path="/equipments-booked" element={<EquimentsBooked />} />
+          {/* route per la pagina di login utente */}
+          <Route path="/login" element={<Login />} />
+          {/* route per la pagina di registrazione utente */}
+          <Route path="/register" element={<Register />} />
+          {/* route per path di pagine inesistenti */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </>
   );
+
 }
 
-export default App
+export default App;
