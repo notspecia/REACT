@@ -40,39 +40,33 @@ function ReservationEquipment({ equipment, closeModal }: { equipment: Equipment;
 
 
             {/* modale per la prenotazione dell'equipment */}
-            <div className="modal flex flex-col justify-around fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-40 w-2/5 h-2/3 bg-slate-800 text-zinc-50 px-5 rounded-3xl">
+            <div className="modal flex flex-col justify-around fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-40 w-2/6 h-2/3 bg-slate-800 text-zinc-50 px-5 rounded-3xl">
 
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center gap-2">
                     <h1 className="text-4xl text-center">Prenota ora {equipment.name}!</h1>
-                    <h2 className="text-xl font-light text-center">{equipment.claim}</h2>
+                    <h2 className="text-2xl font-light text-center">{equipment.claim}</h2>
                 </div>
 
                 <div className="flex flex-col items-center justify-center gap-6 p-4">
                     <div className="flex flex-col items-center w-full">
                         <label htmlFor="durata" className="text-center text-lg mb-2">Inserisci la durata di utilizzo (Minuti)</label>
-                        <input
-                            onChange={handleMinutesChange}
-                            type="number"
-                            name="durata"
-                            id="durata"
-                            min="0"
-                            className="w-3/4 p-2 text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-lime-500"
-                        />
+                        <input onChange={handleMinutesChange} type="number" name="durata" id="durata" min="0"
+                            className="w-3/4 p-2 text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-lime-500" />
                     </div>
-                    <div className="flex flex-col items-center gap-3">
-                        <p className="text-lg font-medium">Prezzo totale: <span className="font-bold">{totalPrice}€</span></p>
+                    <div className="flex flex-row justify-between w-9/12 items-center gap-3">
+                        <p className="text-lg font-light">Prezzo totale: <span className="font-bold">{totalPrice}€</span></p>
                         <p className="text-lg font-light">Prezzo al minuto: <span className="font-semibold">{equipment.pricePerMinute.toFixed(2)}€</span></p>
                     </div>
                 </div>
 
 
-                <div className="flex justify-between">
+                <div className="flex justify-around">
                     {/* basta solamente evocare la funzione di callback che andrà a resettare a "null" il valore
                     dell'equipment selezionato! */}
                     {minutes ? (
-                        <button onClick={handleBooking} className="bg-lime-700 hover:bg-lime-900 text-xl px-4 py-1 rounded-lg">Conferma prenotazione</button>
+                        <button onClick={handleBooking} className="bg-lime-700 hover:bg-lime-900 text-xl px-4 py-1 rounded-lg">Conferma</button>
                     ) : (
-                        <button onClick={handleBooking} className="bg-lime-700 text-xl text-gray-700 px-4 py-1 rounded-lg" disabled>Conferma prenotazione</button>
+                        <button onClick={handleBooking} className="bg-lime-700 text-xl text-gray-700 px-4 py-1 rounded-lg" disabled>Conferma</button>
                     )}
                     <button onClick={closeModal} className="bg-red-500  hover:bg-red-700 text-xl px-4 py-1 rounded-lg">Chiudi</button>
                 </div>

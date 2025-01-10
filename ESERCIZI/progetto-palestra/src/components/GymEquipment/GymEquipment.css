@@ -1,4 +1,8 @@
 /* style to manage the :hover effects on the cards equipements */
+.equipment {
+    background-color: #1b294c;
+    /* animation: borderLight 5s linear infinite; */
+}
 
 .equipment,
 button {
@@ -6,10 +10,38 @@ button {
 }
 
 .equipment:hover {
-    background-color: #1b294c;
+    background-color: #283d70;
     transform: scale(1.02);
 }
 
 .equipment button:hover {
-    background-color: rgb(248, 54, 54);
+    background-color: rgb(139, 20, 81);
+}
+
+
+/* ---- animazione --------- */
+
+
+
+/* animation applied principaly to the borders of the elements */
+@keyframes borderLight {
+    0% {
+        box-shadow: rgba(255, 255, 255, 0) 0 0 0 0;
+    }
+
+    25% {
+        box-shadow: rgba(255, 255, 255, 0.8) 0 0 20px 7px;
+    }
+
+    50% {
+        box-shadow: rgba(255, 255, 255, 0.8) 0 0 35px 12px;
+    }
+
+    75% {
+        box-shadow: rgba(255, 255, 255, 0.8) 0 0 20px 7px;
+    }
+
+    100% {
+        box-shadow: rgba(255, 255, 255, 0) 0 0 0 0;
+    }
 }

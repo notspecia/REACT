@@ -1,4 +1,13 @@
-nav{
-    background-color: rgba(0, 0, 0, 0.4);
+nav {
+    background-color: rgba(72, 59, 136, 0.4);
     backdrop-filter: blur(20px);
+}
+
+nav ul li {
+    border-bottom: 0px solid white;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+        border-bottom: 2px solid white;
+    }
 }

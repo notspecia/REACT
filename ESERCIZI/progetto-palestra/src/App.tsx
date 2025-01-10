@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <Router>
-        {/* wrap dell'applicazione per abilitare il routing tra le pagine della SPA combinato con una Navbar.tsx */}
+        {/* wrap dell'applicazione per abilitare il routing tra le pagine della SPA tramite <Link to="path"/>*/}
         <NavBar />
         <Routes>
           {/* route principale che mostra la pagina Home */}
