@@ -1,13 +1,12 @@
 nav {
-    background-color: rgba(72, 59, 136, 0.4);
     backdrop-filter: blur(20px);
 }
 
 nav ul li {
-    border-bottom: 0px solid white;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.43s ease-in-out;
 
     &:hover {
-        border-bottom: 2px solid white;
+        color: rgb(78, 227, 227);
+        font-size: 20px;
     }
 }

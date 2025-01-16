@@ -8,8 +8,9 @@ export default {
     extend: {
       spacing: {
         '100': '24rem',
+        '110': '28rem',
         '128': '31rem',
-      }
+      },
     },
   },
   plugins: [],

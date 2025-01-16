@@ -32,12 +32,14 @@ function GymEquipmentsList({ equipments }: { equipments: Equipment[] }) {
 
     return (
         <>
-            {/* looppiamo tramite il metodo .map() e andiamo a creare per ogni oggetto {equipment}, un componente apposito 
+            <div className="flex flex-wrap justify-around gap-y-24 py-10">
+                {/* looppiamo tramite il metodo .map() e andiamo a creare per ogni oggetto {equipment}, un componente apposito 
             passiamo come props anche una callback function che permette di passare dati e informazioni (in questo caso aggiornamento
             dello stato di "selectedEquipment", che cambia da "null" all'equipment selezionato dall'utente */}
-            {equipments.map((equipment, index) => (
-                <GymEquipment key={index} equipment={equipment} openModal={openModal} />
-            ))}
+                {equipments.map((equipment, index) => (
+                    <GymEquipment key={index} equipment={equipment} openModal={openModal} />
+                ))}
+            </div>
 
 
             {/* mostra la modale solo se c'è un'attrezzatura selezionata dal figlio `GymEquipment.tsx` tramite bottone

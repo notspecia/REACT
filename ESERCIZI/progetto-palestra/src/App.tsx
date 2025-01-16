@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import fetchEquipments from './services/GymEquipment.api'; // funzione con promise per la richiesta HTTP degli equipments
+import GetEquipments from './services/GetEquipments.api'; // funzione con promise per la richiesta HTTP GET di tutti gli equipments
 import { type Equipment } from './models/Equipment.model';
 
+// importazione delle pages da inserire come "element" nelle Routes di react-router-dom
 import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home/Home';
 import EquimentsBooked from './pages/EquipmentsBooked/EquipmetsBooked';
@@ -26,14 +27,14 @@ function App() {
 
 
   // al montaggio dell'App.tsx sarà avviato l'useEffect che fa una richiesta HTTP fetch per ricevere gli equipments per poi passarli al Route <Home></Home>
+  // richiamiamo la chiamata fetch che risolve la Promise che è stata restituita, con i dati equipments / errori
+  // 01. i dati ricevuti con successo saranno settati tramite il setEquipments cambiano lo stato dell'App.tsx
+  // 02. gli errori ricevuti dal fallimento della fetch o stato di errore, gestiti tramite lo stato apposito di App.tsx setError
   useEffect(() => {
-
-    // richiamiamo la chiamata fetch che risolve la Promise che è stata restituita, con i dati equipments / errori
-    // 01. i dati ricevuti con successo saranno settati tramite il setEquipments cambiano lo stato dell'App.tsx
-    // 02. gli errori ricevuti dal fallimento della fetch o stato di errore, gestiti tramite lo stato apposito di App.tsx setError
-    fetchEquipments()
-      .then((equipments) => { setEquipments(equipments); console.log(equipments) })
-      .catch(() => setError(`Errore nel caricamento degli equipments! riprovare pià tardi!`)); // settiamo lo state "errore"
+    GetEquipments("https://d3660g9kardf5b.cloudfront.net/api/equipment")
+      .then((res) => { setEquipments(res); console.log(res) })  // successo, salviamo i dati 
+      .catch(() => setError("Errore nel caricamento degli equipments! Riprova più tardi.")) // gestiamo errori da mostrare all'utente
+      .finally(() => console.warn("Chiamata equipments chiusa."));
   }, []);
 
 

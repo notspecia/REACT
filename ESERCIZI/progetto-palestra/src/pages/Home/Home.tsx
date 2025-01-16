@@ -10,7 +10,7 @@ function Home({ equipments, error }: { equipments: Equipment[], error: string | 
 
     return (
         <>
-            <h1 className="text-white text-7xl font-bold text-center mt-28 mb-24">Gym Equipment</h1>
+            <h1 className="text-white text-6xl font-bold text-center mt-32 mb-16">Gym Equipment</h1>
 
             {/* 
             - in caso il value di "errore" sia != da null andrà a reinidirizzare la lista degli equipments,
@@ -20,9 +20,7 @@ function Home({ equipments, error }: { equipments: Equipment[], error: string | 
             {error ? (
                 <h1 className='text-3xl text-red-700 text-center'>{error}</h1>
             ) : (
-                <div className="flex flex-wrap justify-around gap-y-24">
-                    <GymEquipmentsList equipments={equipments} />
-                </div>
+                <GymEquipmentsList equipments={equipments} />
             )}
         </>
     );
