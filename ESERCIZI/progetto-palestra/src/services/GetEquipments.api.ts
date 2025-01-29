@@ -19,7 +19,8 @@ export const GetEquipments = async (path: string): Promise<Equipment[]> => {
         throw new Error("Errore nel recupero degli equipments. Riprova più tardi.");
     }
 
-    return response.json(); // Restituisce i dati in formato risposta JSON dalla chiamata HTTP GET
+    // restituisce i dati in formato risposta JSON dalla chiamata HTTP GET
+    return response.json();
 };
 
 

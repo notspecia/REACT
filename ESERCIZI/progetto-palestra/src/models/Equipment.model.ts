@@ -1,4 +1,5 @@
 export interface Equipment {
+    id: number,
     name: string,
     claim: string,
     icon: string,

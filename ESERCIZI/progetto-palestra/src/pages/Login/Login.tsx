@@ -1,51 +1,19 @@
-import { FormEventHandler, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
-import LoginUser from "../../services/LoginUser.api";
+import { Link } from 'react-router-dom';
+import useLoginController from "./useLoginController.ts";
 
 
 
-
-// Pagina di login che permette all'utente di riceverei il suo token JWT per poter effettuare chiamate API
+/**
+ * Nome della funzione
+ * Pagina di login che permette all'utente di riceverei il suo token JWT per poter effettuare chiamate API
+ * @param {TipoInput1} NomeInput1 - DescrizioneInput1
+ * @param {TipoInput2} NomeInput2 - DescrizioneInput2
+ * @returns {TipoOutput} - DescrizioneOutput
+ */
 function Login() {
 
-    //* stato iniziale del form di login con i campi nel form con stringa vuota, verranno modificati tramite handleInputChange() degli input
-    //* stato inziale di un errore in caso ci fossero problematiche durante il login nel form
-    const [dataLogin, setDataLogin] = useState({ username: "", password: "" });
-    const [dataError, setDataError] = useState<null | string>(null);
-
-    //* importato da react-router permette se inserito un path dei router dentro App.tsx, di rendirizzare l'utente dove si voglia
-    const navigate = useNavigate();
-
-
-    // ---------------------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------------------
-
-
-    // al cambiamento degli input USERNAME&PASSWORD, settiamo i nuovi dati tramite setFormData() dinamicamente da poi passare alla fetch POST all'interno del body in JSON
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target; // ricava il nome del campo (username/password) e il valore inserito
-        setDataLogin({ ...dataLogin, [name]: value });
-    };
-
-
-    // al submit del form andiamo a prevenire il comportamento default di un form ed eseguiamo la fetch POST di registrazione
-    const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-        e.preventDefault();
-
-        try {
-            const token = await LoginUser(dataLogin.username, dataLogin.password, "https://d3660g9kardf5b.cloudfront.net/api/login");
-            navigate("/equipments-booked");
-            console.log(token)
-
-            // gestione errori di autenticazione da mostrare all'utente settato tramite setDataError()
-        } catch (err) {
-            setDataError(`Errore tentativo login! Riprova: ${err}`)
-        }
-
-    }
-
-
+    // destructuring dell'oggetto restituito ed importato qui dentro da "useLoginController.ts" contenente stati e logica con funzioni handle degli inputs/form
+    const { dataLogin, dataError, handleInputChange, handleSubmit } = useLoginController();
 
 
     return (
@@ -72,7 +40,7 @@ function Login() {
                     </div>
 
                     {/* campo input Password*/}
-                    <div className="mb-14">
+                    <div className="mb-10">
                         <label htmlFor="password" className="block text-lg font-light text-white mb-2">
                             Password
                         </label>
@@ -90,7 +58,7 @@ function Login() {
 
                     {/*!! se l'errore è una stringa quindi valore true, e non + null (falsey), viene mostrato sotto il form di login come errore */}
                     {dataError && (
-                        <p className=" text-red-600 text-center text-md pb-4">{dataError}</p>
+                        <p className="text-red-600 text-center text-md pb-4">{dataError}</p>
                     )}
 
                     {/* bottone submit form login */}

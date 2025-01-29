@@ -1,34 +1,22 @@
-import React, { useState } from "react";
-
+import useReservationEquipmentController from "./useBookingEquipmentController";
 import { type Equipment } from "../../models/Equipment.model";
 
 
 
+/**
+ * Nome della funzione
+ * Descrizione della funzione
+ * @param {TipoInput1} NomeInput1 - DescrizioneInput1
+ * @param {TipoInput2} NomeInput2 - DescrizioneInput2
+ * @returns {TipoOutput} - DescrizioneOutput
+ */
+function BookingEquipment({ equipment, closeModal }: { equipment: Equipment; closeModal: () => void; }) {
 
-function ReservationEquipment({ equipment, closeModal }: { equipment: Equipment; closeModal: () => void; }) {
-
-    //* stato per tenere traccia dei cambiamenti dei minuti di utilizzo inseriti dall'utente
-    const [minutes, setMinutes] = useState(0);
-
-
-    // settiamo ogni volta il valore dei minuti diverso ad ogni aggiornamento del component, passando l'evento dell'input come parametro
-    const handleMinutesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setMinutes(parseInt(event.target.value) || 0); // trasformiamo il valore dell'input da stringa a NUMBER
-    }
-    // a ogni aggiornamento del componente, la moltiplicazione data dal (prezzoXminuto * minutiInseriti) cambia dinamicamente
-    const totalPrice = equipment.pricePerMinute * minutes;
-
-
-    // quando viene prenotato l'equipment
-    const handleBooking = () => {
-        console.log(equipment.name);
-        console.log("implement the POST of the equipment booked");
-    }
-
+    // destructuring dell'oggetto restituito ed importato qui dentro da "useLoginController.ts" contenente stati e logica con funzioni handle degli inputs/form
+    const { handleMinutesChange, totalPrice, handleBooking, minutes } = useReservationEquipmentController({ equipment });
 
     //* SE L'EQUIPMENT NON è STATO SELEZIONATO, NON ANDRA A REINDIRIZZARE L'ELEMENTO TSX DELLA MODALE dentro il return()
     if (!equipment) return null;
-
 
 
     return (
@@ -40,13 +28,12 @@ function ReservationEquipment({ equipment, closeModal }: { equipment: Equipment;
 
 
             {/* modale per la prenotazione dell'equipment */}
-            <div className="modal flex flex-col justify-around fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-40 w-2/6 h-2/3 bg-slate-800 text-zinc-50 px-5 rounded-lg">
+            <div className="modal flex flex-col justify-around fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-40 w-2/6 h-2/3 bg-slate-800 text-zinc-50 px-2 rounded-lg">
 
                 <div className="flex flex-col items-center gap-2">
                     <h1 className="text-4xl text-center">Prenota ora {equipment.name}!</h1>
-                    <h2 className="text-2xl font-light text-center">{equipment.claim}</h2>
+                    <h2 className="text-xl font-light text-center">{equipment.claim}</h2>
                 </div>
-
                 <div className="flex flex-col items-center justify-center gap-6 p-4">
                     <div className="flex flex-col items-center w-full">
                         <label htmlFor="durata" className="text-center text-xl mb-2">Inserisci la durata di utilizzo (Minuti)</label>
@@ -58,21 +45,21 @@ function ReservationEquipment({ equipment, closeModal }: { equipment: Equipment;
                         <p className="text-md font-light">Prezzo al minuto: <span className="font-semibold">{equipment.pricePerMinute.toFixed(2)}€</span></p>
                     </div>
                 </div>
-
-
                 <div className="flex justify-around">
                     {/* basta solamente evocare la funzione di callback che andrà a resettare a "null" il valore
                     dell'equipment selezionato! */}
                     {minutes ? (
-                        <button onClick={handleBooking} className="bg-lime-700 hover:bg-lime-900 text-xl px-4 py-1 rounded-lg">Conferma</button>
+                        <button onClick={handleBooking} className="bg-lime-700 hover:bg-lime-900 text-xl px-10 py-1 rounded-lg">Conferma</button>
                     ) : (
-                        <button onClick={handleBooking} className="bg-lime-700 text-xl text-gray-700 px-4 py-1 rounded-lg" disabled>Conferma</button>
+                        <button className="bg-lime-700 text-xl text-gray-700 px-10 py-1 rounded-lg" disabled>Conferma</button>
                     )}
-                    <button onClick={closeModal} className="bg-red-500  hover:bg-red-700 text-xl px-4 py-1 rounded-lg">Chiudi</button>
+                    <button onClick={closeModal} className="bg-red-500  hover:bg-red-700 text-xl px-10 py-1 rounded-lg">Chiudi</button>
                 </div>
 
             </div>
         </>
     );
 }
-export default ReservationEquipment;
+
+
+export default BookingEquipment;

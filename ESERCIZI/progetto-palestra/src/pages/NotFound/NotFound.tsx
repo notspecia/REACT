@@ -1,5 +1,12 @@
 
-// componente banale in caso venisse inserito un path != da quelli delle pagine create all'interno della SPA
+
+/**
+ * Nome della funzione
+ * componente montato in caso venisse inserito un path != da quelli delle pagine di routing create all'interno di app.tsx
+ * @param {TipoInput1} NomeInput1 - DescrizioneInput1
+ * @param {TipoInput2} NomeInput2 - DescrizioneInput2
+ * @returns {TipoOutput} - DescrizioneOutput
+ */
 function NotFound() {
     return (
         <>
@@ -7,7 +14,6 @@ function NotFound() {
         </>
     )
 }
-
 
 
 export default NotFound;

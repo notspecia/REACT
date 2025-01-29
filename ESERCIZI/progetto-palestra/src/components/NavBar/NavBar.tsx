@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-
 import "./NavBar.css";
 
 
-/* componente NavBar che permette di collegare i link delle pagine del routing
-i path dentro <Link> devono corrispondere a quelli dentro i <Route> dentro App.tsx */
+
+/**
+ * Nome della funzione
+ *  componente NavBar che permette di collegare i link delle pagine del routing
+ *  i path dentro <Link> devono corrispondere a quelli dentro i <Route> dentro App.tsx
+ * @param {TipoInput1} NomeInput1 - DescrizioneInput1
+ * @param {TipoInput2} NomeInput2 - DescrizioneInput2
+ * @returns {TipoOutput} - DescrizioneOutput
+ */
 function NavBar() {
 
 
