@@ -46,7 +46,7 @@ function useLoginController() {
 
             // memorizziamo il token nel localStorage per poi utilizzarlo come chiave per prenotare e vedere i propri oggetti da palestra e veniamo renderizzati alla pagina agli strumenti dell'utente
             localStorage.setItem("token", res.token);
-            navigate("/equipments-booked");
+            navigate("/");
 
             // gestione errori di autenticazione da mostrare all'utente settato tramite setDataError()
         } catch (err) {

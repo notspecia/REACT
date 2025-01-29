@@ -1,5 +1,5 @@
 import GymEquipment from "../GymEquipment/GymEquipment";
-import BookingEquipment from "../ReservationEquipment/BookingEquipment";
+import BookingEquipment from "../BookingEquipment/BookingEquipment";
 import useEquipmentListController from "./useEquipmentListController";
 import { type Equipment } from "../../models/Equipment.model";
 
@@ -20,10 +20,11 @@ function GymEquipmentsList({ equipments }: { equipments: Equipment[] }) {
 
     return (
         <>
-            <div id="list" className="flex flex-wrap justify-around gap-y-24 py-10 pt-40">
-                {/* looppiamo tramite il metodo .map() e andiamo a creare per ogni oggetto {equipment}, un componente apposito 
-                 passiamo come props anche una callback function che permette di passare dati e informazioni (in questo caso aggiornamento
-                dello stato di "selectedEquipment", che cambia da "null" all'equipment selezionato dall'utente */}
+            {/* looppiamo tramite il metodo .map() e andiamo a creare per ogni oggetto {equipment}, un componente apposito 
+            passiamo come props anche una callback function che permette di passare dati e informazioni (in questo caso aggiornamento
+            dello stato di "selectedEquipment", che cambia da "null" all'equipment selezionato dall'utente */}
+            <h1 className="text-white text-4xl text-center">I nostri corsi!</h1>
+            <div id="list" className="flex flex-wrap justify-around gap-y-20 py-10 pt-32">
                 {equipments.map((equipment, index) => (
                     <GymEquipment key={index} equipment={equipment} openModal={openModal} />
                 ))}
@@ -33,7 +34,6 @@ function GymEquipmentsList({ equipments }: { equipments: Equipment[] }) {
             {/* mostra la modale solo se c'è un'attrezzatura selezionata dal figlio `GymEquipment.tsx` tramite bottone
             INSERITA CONDIZIONE && se il valore di selectedEquipment è falsy (null), allora NON andrà secondo questo operatore a 
             reindirizzare il component `ReservationEquipment.tsx` fino a quando l'equipment non ricerverà un equipment selezionato
-            
             passiamo come props oltre all'equipment selezionato, anche una CALLBACKFUNCTION che permette di resettare il valore
             a "null" quando verrà cliccato un bottone associato ad essa */}
             {selectedEquipment && (

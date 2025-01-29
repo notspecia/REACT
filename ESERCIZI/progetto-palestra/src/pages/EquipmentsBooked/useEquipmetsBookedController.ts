@@ -28,8 +28,7 @@ function useEquipmentsBooked() {
     useEffect(() => {
         GetUserEquipments("https://d3660g9kardf5b.cloudfront.net/api/equipment-bookings")
             .then(res => setUserEquipments(res))  // successo, salviamo i dati 
-            .catch(() => setError("Errore nel caricamento degli equipments dell'utente! Riprova più tardi.")) // gestiamo errori da mostrare all'utente
-            .finally(() => console.warn("Chiamata equipments utente chiusa."));
+            .catch(() => setError("Loggati per poter prenotare i tuoi attrezzi!")) // gestiamo errori da mostrare all'utente
     }, []);
 
 

@@ -1,3 +1,4 @@
+// interfaccia iniziale di quando si fa la GET per prendere gli equipment dell'utente
 export interface EquipmentUser {
     id: number,
     equipment_id: number,

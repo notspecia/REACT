@@ -1,4 +1,4 @@
-import { type Equipment } from "../../models/Equipment.model";
+import { type EquipmentFiltered } from "../../models/Equipment.model";
 
 
 
@@ -11,7 +11,7 @@ import { type Equipment } from "../../models/Equipment.model";
  * @param {TipoInput2} NomeInput2 - DescrizioneInput2
  * @returns {TipoOutput} - DescrizioneOutput
  */
-function GymEquipmentUser({ equipment }: { equipment: Equipment }) {
+function GymEquipmentUser({ equipmentUser }: { equipmentUser: EquipmentFiltered }) {
 
     // destructuring dell'oggetto restituito ed importato qui dentro da "useLoginController.ts" contenente stati e logica con funzioni handle degli inputs/form
 
@@ -19,7 +19,30 @@ function GymEquipmentUser({ equipment }: { equipment: Equipment }) {
 
     return (
         <>
-            <p>{equipment.name}</p>
+            <div className="equipmentUser relative w-80 md:w-96 flex flex-col items-center shadow-lg bg-white/10 backdrop-blur-lg text-white py-6 px-8 rounded-2xl border border-white/20 transition-transform duration-300 hover:scale-105">
+                {/* Badge prezzo */}
+                <span className="absolute top-4 right-4 bg-sky-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
+                    {equipmentUser.pricePerMinute} €/min
+                </span>
+
+                {/* Nome */}
+                <h2 className="text-2xl font-bold mb-3 text-center">{equipmentUser.name}</h2>
+
+                {/* Icona e immagine */}
+                <div className="relative w-40 h-40 flex justify-center items-center bg-indigo-800/20 rounded-full shadow-md">
+                    <img src={equipmentUser.image} alt={equipmentUser.name} className="w-32 h-32 object-contain" />
+                </div>
+
+                {/* Claim */}
+                <p className="text-center text-sm mt-4 px-4">{equipmentUser.claim}</p>
+
+                {/* Pulsante azione */}
+                <button className="mt-5 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-6 rounded-lg shadow-md transition-all duration-300">
+                    Prenota
+                </button>
+            </div>
+
+
         </>
     );
 }

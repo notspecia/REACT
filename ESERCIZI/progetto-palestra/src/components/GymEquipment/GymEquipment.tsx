@@ -23,10 +23,10 @@ function GymEquipment({ equipment, openModal }: { equipment: Equipment; openModa
 
     return (
         <>
-            <div className="equipment flex flex-col items-center w-128 shadow-2xl bg-gradient-to-r from-sky-500/30 to-indigo-500/30 text-slate-100 py-5 px-6 rounded-lg">
+            <div className="equipment flex flex-col items-center w-120 shadow-2xl bg-gradient-to-r from-sky-500/30 to-indigo-500/30 text-slate-100 py-5 px-6 border border-white/30 rounded-lg">
                 <h2 className="text-4xl font-serif text-center font-bold mb-3">{equipment.name}</h2>
                 <h3 className="text-lg font-light text-center mb-6">{equipment.claim}</h3>
-                <img src={equipment.image} alt="immagine strumento" className="w-11/12 h-72 rounded-xl mb-8" />
+                <img src={equipment.image} alt="immagine strumento" className="w-10/12 h-72 rounded-xl mb-8" />
                 <div className="flex flex-row justify-between items-center w-full">
                     <button onClick={handleClick} className="bg-pink-700 text-xl px-6 py-1 border-2 border-t-gray-300 rounded-md">Prenota!</button>
                     <p>prezzo al minuto: {equipment.pricePerMinute.toFixed(2)}€</p>

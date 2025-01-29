@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useAppController from './useAppController';
 
 // importazione delle pages da inserire come "element" nelle Routes di react-router-dom
-import NavBar from './components/NavBar/NavBar';
+import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import EquimentsBooked from './pages/EquipmentsBooked/EquipmetsBooked';
 import Login from './pages/Login/Login';
@@ -29,7 +29,7 @@ function App() {
     <>
       <Router>
         {/* wrap dell'applicazione per abilitare il routing tra le pagine della SPA tramite <Link to="path"/>*/}
-        <NavBar />
+        <Navbar />
         <Routes>
           {/* route principale che mostra la pagina Home */}
           <Route path="/" element={<Home equipments={equipments} error={error} />} />

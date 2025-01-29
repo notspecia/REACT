@@ -1,6 +1,5 @@
 
 
-
 /**
  * Nome della funzione
  * Descrizione della funzione

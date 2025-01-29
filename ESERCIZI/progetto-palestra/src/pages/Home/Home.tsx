@@ -19,9 +19,9 @@ function Home({ equipments, error }: { equipments: Equipment[], error: string | 
             {/* Hero della home con un titolo e un bottone per iniziare a navigare tra gli strumenti da palestra */}
             <div className="flex items-center h-screen bg-gray-900 text-white text-center py-16 mt-5">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-4xl font-bold leading-tight">Benvenuti in angFitness!</h1>
-                    <p className="text-lg mt-3">Scopri i nostri corsi e inizia il tuo percorso verso il benessere fisico.</p>
-                    <a href="#list" className="inline-block mt-4 px-8 py-2 bg-blue-600 hover:bg-blue-700 text-lg font-medium rounded-lg transition duration-300">Esplora i nostri corsi!</a>
+                    <h1 className="text-5xl font-bold leading-tight">Benvenuti in angFitness!</h1>
+                    <p className="text-xl mt-3 mb-5">Scopri i nostri corsi e inizia il tuo percorso verso il benessere fisico.</p>
+                    <a href="#list" className="inline-block mt-4 px-10 py-3 bg-blue-600 hover:bg-blue-700 text-lg font-medium rounded-lg transition duration-300">Esplora i nostri corsi!</a>
                 </div>
             </div>
 

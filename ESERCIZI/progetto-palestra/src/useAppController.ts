@@ -30,7 +30,6 @@ function useAppController() {
         GetEquipments("https://d3660g9kardf5b.cloudfront.net/api/equipment")
             .then(res => { setEquipments(res); console.log(equipments) })  // successo, salviamo i dati 
             .catch(() => setError("Errore nel caricamento degli equipments! Riprova più tardi.")) // gestiamo errori da mostrare all'utente
-            .finally(() => console.warn("Chiamata equipments chiusa."));
     }, []);
 
 

@@ -9,7 +9,7 @@ export default {
       spacing: {
         '100': '24rem',
         '110': '28rem',
-        '128': '31rem',
+        '128': '30rem',
         '50vh': '50vh',
       },
     },

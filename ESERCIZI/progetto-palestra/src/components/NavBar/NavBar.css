@@ -2,7 +2,12 @@ nav {
     backdrop-filter: blur(20px);
 }
 
-nav ul li {
+ul li {
+    display: flex;
+    align-items: center;
+}
+
+ul li {
     transition: all 0.43s ease-in-out;
 
     &:hover {

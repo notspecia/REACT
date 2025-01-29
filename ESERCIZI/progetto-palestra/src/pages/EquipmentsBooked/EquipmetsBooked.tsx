@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import GymEquipmentUserList from "../../components/GymEquipmentUserList/GymEquipmentUserList";
 import useEquipmentsBooked from "./useEquipmetsBookedController";
-
 
 
 
@@ -23,12 +23,12 @@ function EquimentsBooked() {
             - in caso il value di "errore" sia != da null andrà a reinidirizzare la lista degli equipments dell'utente,
             */}
             {error ? (
-                <h1 className="text-red-700 text-3xl text-center mt-48">{error}</h1>
+                <h1 className="text-white text-3xl text-center underline underline-offset-1 mt-48">
+                    <Link to="/LOGIN">{error}</Link>
+                </h1>
             ) : (
                 <GymEquipmentUserList userEquipments={userEquipments} />
             )}
-
-            {console.log(userEquipments)}
         </>
     );
 

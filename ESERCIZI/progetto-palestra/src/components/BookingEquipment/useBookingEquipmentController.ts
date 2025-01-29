@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookingEquipment } from "../../services/BookingEquipment.api";
+import { BookingEquipment } from "../../services/BookEquipment.api";
 import { useNavigate } from "react-router-dom";
 import { type Equipment } from "../../models/Equipment.model";
 

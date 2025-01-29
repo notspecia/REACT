@@ -1,10 +1,9 @@
-import { type Equipment } from "../models/Equipment.model";
-import { EquipmentUser } from "../models/EquipmentUser.model";
+import { type EquipmentUser } from "../models/EquipmentUser.model";
 
 
 
 /**
- * const GetUserEquipments = async()
+ * function GetUserEquipments
  * Funzione arrow -> che restiuisce una promise che quando sarà risolta contiene un array di oggetti equipments
  * gestione di errori in caso la fetch ha uno status negativo (arrivata ma respinta)
  * tramite blocco .catch() cattura l'errore in qualsiasi errore generato
@@ -14,7 +13,7 @@ import { EquipmentUser } from "../models/EquipmentUser.model";
  */
 export const GetUserEquipments = async (path: string): Promise<EquipmentUser[]> => {
 
-    // get the token from localStorage for authorization
+    // prendiamo il token dal localStorage for authorization
     const token = localStorage.getItem("token");
 
     if (!token) {
