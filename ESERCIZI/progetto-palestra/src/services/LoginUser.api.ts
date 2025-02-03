@@ -1,12 +1,14 @@
-
-
-
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * effettua una richiesta API POST per autenticare un utente e ottenere un token di autenticazione di esso
+ * 
+ * questa funzione si collega all'endpoint specificato, inviando le credenziali dell'utente 
+ * per ottenere un token di autenticazione
+ * 
+ * @param {string} username - nome utente per l'accesso
+ * @param {string} password - password associata all'account
+ * @param {string} path - URL dell'endpoint API per l'autenticazione dell'utente
+ * @returns {Promise<{ token: string }>} - oggetto contenente il token di autenticazione restituito dal server di BACKEND
+ * @throws {Error} - se la richiesta non va a buon fine, ad esempio in caso di credenziali errate
  */
 export const LoginUser = async (username: string, password: string, path: string): Promise<{ token: string }> => {
 

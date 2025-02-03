@@ -1,9 +1,3 @@
-/* style to manage the :hover effects on the cards equipements */
-.equipment {
-    /* background-color: #1b294c; */
-
-}
-
 .equipment,
 button {
     transition: all 0.3s ease-in-out;

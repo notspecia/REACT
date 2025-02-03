@@ -1,14 +1,14 @@
-
-// funzione service api che si collega alla pagina Register.tsx, ottiene i dati dei form una volta che sono validi, effettua una API POST per registrare l'utente 
-
 /**
- * const RegisterUser = async () 
- * funzione service api che si collega alla pagina Register.tsx, ottiene i dati dei form una volta che sono validi, 
- * effettua una API POST per registrare l'utente 
- * @param {string} username - DescrizioneInput1
- * @param {string} password - DescrizioneInput2
- * @param {string} path - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * effettua una richiesta API POST per registrare un nuovo utente.
+ * 
+ * questa funzione si collega alla pagina "Register.tsx", ottiene i dati del form una volta validati 
+ * e invia una richiesta POST all'endpoint specificato per registrare l'utente
+ * 
+ * @param {string} username - username utente da registrare
+ * @param {string} password - password associata all'account
+ * @param {string} path - URL dell'endpoint API per la registrazione
+ * @returns {Promise<string>} - risposta testuale del server
+ * @throws {Error} - se la richiesta non va a buon fine
  */
 export const RegisterUser = async (username: string, password: string, path: string) => {
 
@@ -28,6 +28,5 @@ export const RegisterUser = async (username: string, password: string, path: str
     // restituisce i dettagli della risposta della chiamata HTTP POST per la registrazione di un nuovo utente
     return response.text();
 };
-
 
 export default RegisterUser;

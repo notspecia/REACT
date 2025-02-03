@@ -5,12 +5,14 @@ import useRegisterController from "./useRegisterController";
 // 
 
 /**
- * pagina Routing contenente un form di registrazione per permettere all'utente di creare 
- * un suo nuovo token JWT e registrarsi per prenotare strumenti da palestra
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * componente Register
+ * 
+ * questa pagina contiene un form di registrazione per consentire all'utente di creare un nuovo 
+ * account, ottenere un token JWT e accedere alla prenotazione degli strumenti in palestra.
+ * 
+ * il form raccoglie username e password e, al submit, esegue la registrazione tramite 
+ * il servizio API gestito nel controller.
+ * 
  */
 function Register() {
 
@@ -59,7 +61,7 @@ function Register() {
                         />
                     </div>
 
-                    {/* !! segnalare all'utente eventuali errori durante la compilazione del form */}
+                    {/* segnalare all'utente eventuali errori durante la compilazione del form */}
                     {dataError.map((error, index) => (
                         <p key={index} className=" text-red-600 text-center text-md pb-4">{error}</p>
                     ))}

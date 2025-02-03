@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import GymEquipmentUserList from "../../components/GymEquipmentUserList/GymEquipmentUserList";
-import useEquipmentsBooked from "./useEquipmetsBookedController";
+import useEquipmentsBooked from "./useEquipmentsBookedController";
 
 
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * componente EquimentsBooked
+ * 
+ * renderizza la lista degli attrezzi prenotati dall'utente.  
+ * se l'utente non è loggato, viene mostrato un messaggio di avvertimento con un link per effettuare il login. 
+ * 
+ * se non ci sono errori, vengono visualizzati gli attrezzi prenotati dall'utente tramite il componente `GymEquipmentUserList`.
  */
 function EquimentsBooked() {
 

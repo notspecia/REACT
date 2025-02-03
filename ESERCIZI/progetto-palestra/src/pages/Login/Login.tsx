@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import useLoginController from "./useLoginController.ts";
 
 
-
 /**
- * Nome della funzione
- * Pagina di login che permette all'utente di riceverei il suo token JWT per poter effettuare chiamate API
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * componente Login
+ * 
+ * componente della pagina di login che permette all'utente di inserire le proprie credenziali (username e password),
+ * inviare i dati per ottenere un token JWT e, in caso di successo, effettuare il login e portare l'utente alla pagina home
+ * 
+ * in caso di errore, viene mostrato un messaggio di errore sotto il form. 
+ * il form di login include anche un link per la registrazione in caso l'utente non abbia ancora un account.
  */
 function Login() {
 

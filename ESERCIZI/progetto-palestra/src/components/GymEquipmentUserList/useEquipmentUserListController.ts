@@ -4,11 +4,14 @@ import { type EquipmentFiltered, type Equipment } from "../../models/Equipment.m
 
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * controller useEquipmentUserList
+ * 
+ * controller che filtra la lista delle attrezzature prenotate dall'utente, restituendo solo gli oggetti 
+ * che corrispondono a quelli disponibili in palestra, con un Model rivisitato "EquipmentFiltered[]"
+ * 
+ * @param {EquipmentUser[]} params.userEquipments - lista delle attrezzature prenotate dall'utente
+ * @param {Equipment[]} params.equipments - lista di tutte le attrezzature disponibili in palestra
+ * @returns {{ filteredEquipments: EquipmentFiltered[] }} - restituisce un array con le attrezzature prenotate dall'utente, con il Model corretto
  */
 function useEquipmentUserList({ userEquipments, equipments }: { userEquipments: EquipmentUser[], equipments: Equipment[] }) {
 
@@ -43,7 +46,7 @@ function useEquipmentUserList({ userEquipments, equipments }: { userEquipments: 
 
 
 
-    // restituiamo gli state e le funzioni evocate dal form all'iterno del file Login.tsx
+    // restituzione dello stato aggiornato con gli oggetti filtrati nel componente "GymEquipmentUserList.tsx"
     return {
         filteredEquipments
     }

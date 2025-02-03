@@ -6,11 +6,19 @@ import LoginUser from "../../services/LoginUser.api";
 
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * Controller useLoginController
+ * 
+ * gestisce lo stato e la logica del form di login, inclusi l'inserimento dei dati di accesso 
+ * e la gestione delle risposte dalla chiamata API di login
+ * 
+ * se il login ha successo, memorizza il token nel localStorage e reindirizza l'utente appena loggao alla home.
+ * in caso di errore viene mostrato il messaggio di errore.
+ * 
+ * @returns {Object} - restituisce l'oggetto con gli stati e le funzioni da utilizzare nel form di login
+ * @returns {Object} dataLogin - stato contenente username e password dell'utente
+ * @returns {null | string} dataError - stato che contiene eventuali messaggi di errore riscontrati durante il login
+ * @returns {Function} handleInputChange - funzione per aggiornare lo stato dei campi di input
+ * @returns {Function} handleSubmit - funzione per gestire il submit del form
  */
 function useLoginController() {
 
@@ -55,7 +63,7 @@ function useLoginController() {
     }
 
 
-    // restituiamo gli state e le funzioni evocate dal form all'iterno del file Login.tsx
+    // restituiamo gli stati e le funzioni al componente "Login.tsx"
     return {
         dataLogin,
         dataError,

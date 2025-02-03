@@ -4,12 +4,17 @@ import { type Equipment } from "../../models/Equipment.model";
 
 
 /**
- * Nome della funzione
- * Pagina Home che riceve come parametri gli equipments / errore ricevuti dalla fetch GET dentro l'App principale
- * in caso gli equipments vengono ottenuti con successo verrà mostrato un componente che .mappa() tutti gli equipments
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * componente Home
+ * 
+ * componente che rappresenta la pagina principale dell'applicazione, dove gli utenti possono esplorare i corsi e gli strumenti disponibili in palestra
+ * la pagina visualizza un titolo e una descrizione, e offre un link per esplorare i corsi. 
+ * 
+ * se i dati sugli strumenti (equipments) sono disponibili, vengono passati al componente `GymEquipmentsList` 
+ * per essere visualizzati in una lista. 
+ * in caso la lista di equipments non vengono renderizzati, viene mostrato un messaggio di errore.
+ * 
+ * @param {Equipment[]} equipments - lista degli oggetti disponibili in palestra, ottenuta tramite una fetch
+ * @param {string | null} error - messaggio di errore da visualizzare nel caso la fetch fallisca
  */
 function Home({ equipments, error }: { equipments: Equipment[], error: string | null }) {
 

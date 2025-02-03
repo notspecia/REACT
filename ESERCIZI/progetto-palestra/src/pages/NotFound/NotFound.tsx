@@ -1,11 +1,9 @@
-
-
 /**
- * Nome della funzione
- * componente montato in caso venisse inserito un path != da quelli delle pagine di routing create all'interno di app.tsx
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * componente NotFound
+ * 
+ * questo componente viene renderizzato quando l'utente tenta di accedere a un percorso non definito nelle rotte dell'applicazione dentro "App.tsx"
+ * visualizza un messaggio di errore "404 - Pagina non trovata"
+ * 
  */
 function NotFound() {
     return (

@@ -1,20 +1,20 @@
 
 import useAppController from "../../useAppController"; // controller usato per prendere tutti gli equipments tramite GET
 import useEquipmentUserList from "./useEquipmentUserListController";
-import { type EquipmentUser } from "../../models/EquipmentUser.model";
 import GymEquipmentUser from "../GymEquipmentUser/GymEquipmentUser";
-
+import { type EquipmentUser } from "../../models/EquipmentUser.model";
 
 
 
 /**
- * Nome della funzione
- * componente card dell'equipment singolo, che riceve i suoi dati associati (nome, descrizione, prezzo...) 
- * e la funzione di callback che contiene il metodo che contiene il "SetselectedEquipment", 
- * che permette di selezionare questo strumento da palestra, otterrà come parametro l'equipment
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * componente GymEquipmentUserList
+ * 
+ * visualizza la lista delle attrezzature prenotate dall'utente.
+ * 
+ * recupera tutti gli equipment disponibili tramite `useAppController`, li confronta con quelli prenotati in base all'ID
+ * dall'utente e mostra solo quelli associati a quest'ultimo, associando ogni strumento a nuovo model "EquipmentFiltered[]".
+ * 
+ * @param {EquipmentUser[]} props.userEquipments - lista degli equipment prenotati dall'utente
  */
 function GymEquipmentUserList({ userEquipments }: { userEquipments: EquipmentUser[] }) {
 
@@ -34,7 +34,6 @@ function GymEquipmentUserList({ userEquipments }: { userEquipments: EquipmentUse
 
     return (
         <>
-
             {/* 
             in caso il value di "errore" sia != da null andrà a reinidirizzare la lista degli equipments,
             andiamo a mostrare come elmento principale il componente che riceve gli equipments, che verranno
@@ -44,8 +43,8 @@ function GymEquipmentUserList({ userEquipments }: { userEquipments: EquipmentUse
                 <h1 className="text-xl text-red-700 text-center mt-48">{error}</h1>
             ) : (
                 <div className="flex flex-wrap justify-around gap-y-20 py-10 mt-48">
-                    {filteredEquipments.map((equipmentUser, index) => (
-                        <GymEquipmentUser key={index} equipmentUser={equipmentUser} />
+                    {filteredEquipments.map((equipmentUser) => (
+                        <GymEquipmentUser key={equipmentUser.id} equipmentUser={equipmentUser} />
                     ))}
                 </div>
             )}

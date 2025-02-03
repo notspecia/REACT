@@ -3,13 +3,14 @@ import { type Equipment } from "../models/Equipment.model";
 
 
 /**
- * const GetEquipments = async()
- * Funzione arrow -> che restiuisce una promise che quando sarà risolta contiene un array di oggetti equipments
- * gestione di errori in caso la fetch ha uno status negativo (arrivata ma respinta)
- * tramite blocco .catch() cattura l'errore in qualsiasi errore generato
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * recupera l'elenco delle attrezzature da palestra disponibili
+ * 
+ * questa funzione effettua una richiesta API GET all'endpoint specificato per ottenere 
+ * la lista di attrezzature disponibili. Se la richiesta fallisce, viene generato un errore
+ * 
+ * @param {string} path - URL dell'endpoint API per il recupero delle attrezzature.
+ * @returns {Promise<Equipment[]>} -  restituisce un array di oggetti da renderizzare "Equipment.tsx"
+ * @throws {Error} - Se la richiesta non va a buon fine.
  */
 export const GetEquipments = async (path: string): Promise<Equipment[]> => {
 

@@ -1,0 +1,9 @@
+.equipmentUser {
+    transition: all 0.3s ease-in-out;
+}
+
+.equipmentUser:hover {
+    background-color: #444444;
+    animation: borderLight 2s linear infinite;
+    transform: scale(1.02);
+}

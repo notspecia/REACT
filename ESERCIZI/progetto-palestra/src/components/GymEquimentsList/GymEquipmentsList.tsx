@@ -23,10 +23,9 @@ function GymEquipmentsList({ equipments }: { equipments: Equipment[] }) {
             {/* looppiamo tramite il metodo .map() e andiamo a creare per ogni oggetto {equipment}, un componente apposito 
             passiamo come props anche una callback function che permette di passare dati e informazioni (in questo caso aggiornamento
             dello stato di "selectedEquipment", che cambia da "null" all'equipment selezionato dall'utente */}
-            <h1 className="text-white text-4xl text-center">I nostri corsi!</h1>
             <div id="list" className="flex flex-wrap justify-around gap-y-20 py-10 pt-32">
-                {equipments.map((equipment, index) => (
-                    <GymEquipment key={index} equipment={equipment} openModal={openModal} />
+                {equipments.map((equipment) => (
+                    <GymEquipment key={equipment.id} equipment={equipment} openModal={openModal} />
                 ))}
             </div>
 

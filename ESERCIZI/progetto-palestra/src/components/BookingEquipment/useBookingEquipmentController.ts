@@ -17,9 +17,12 @@ function useReservationEquipmentController({ equipment }: { equipment: Equipment
     //* stato per tenere traccia dei cambiamenti dei minuti di utilizzo inseriti dall'utente
     const [minutes, setMinutes] = useState(0);
 
-    //* importato da react-router permette se inserito un path dei router dentro App.tsx, di rendirizzare l'utente dove si voglia
-    //* in caso non si è ancora registrato l'utente (non esiste il token JWT) lo rendirizziamo alla pagina LOGIN
-    //* in caso la prenotazione viene effetuata con successo renederizziamo l'utente alla pagina delle sue prenotazioni  
+    //* stato per tenere conto in caso di errori nella prenotazione sull'insremento dei minuti
+    const [error, setError] = useState<null | string>(null);
+
+    /* importato da react-router permette se inserito un path dei router dentro App.tsx, di rendirizzare l'utente dove si voglia
+    in caso non si è ancora registrato l'utente (non esiste il token JWT) lo rendirizziamo alla pagina LOGIN
+    in caso la prenotazione viene effetuata con successo renederizziamo l'utente alla pagina delle sue prenotazioni */
     const navigate = useNavigate();
 
     // -----------------------------------------------
@@ -43,6 +46,12 @@ function useReservationEquipmentController({ equipment }: { equipment: Equipment
             navigate("/login");
         }
 
+        // controllo se i minuti sono < di 20 (maggiori ad esso sono bloccati dal backend API)
+        if (minutes > 20) {
+            setError("non sono accetate prenotazioni superiori ai 20 minuti!");
+            return;
+        }
+
         try {
             // mostriamo su console per ora un messaggio di successo e poi renderizziamo esso alla sezione degli equipments booked
             await BookingEquipment(equipment.id, minutes,
@@ -62,6 +71,7 @@ function useReservationEquipmentController({ equipment }: { equipment: Equipment
     // restituiamo gli state e le funzioni evocate dal form all'iterno del file Login.tsx
     return {
         minutes,
+        error,
         handleMinutesChange,
         totalPrice,
         handleBooking,

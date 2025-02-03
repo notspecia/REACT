@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * controller useNavbarController
+ *
+ * controller che gestisce lo stato di autenticazione dell'utente e la navigazione nel componente Navbar *
+ * @returns {Object} - stato dell'utente e funzione di logout
  */
 function useNavbarController() {
 
@@ -32,7 +31,7 @@ function useNavbarController() {
     };
 
 
-    // restituiamo gli state e le funzioni evocate dal form all'iterno del file Login.tsx
+    // restituiamo gli state e le funzioni al componente "Navbar.tsx"
     return {
         isLoggedIn,
         handleLogout

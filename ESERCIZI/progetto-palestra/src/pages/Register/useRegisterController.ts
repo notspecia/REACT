@@ -6,11 +6,13 @@ import RegisterUser from "../../services/RegisterUser.api";
 
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * Controller useRegisterController
+ * 
+ * gestisce la logica del form di registrazione, includendo la gestione dello stato 
+ * degli input, la validazione dei dati, la chiamata API per la registrazione e il reindirizzamento 
+ * dell'utente dopo una registrazione avvenuta con successo
+ * 
+ * @returns {object} - stato e funzioni necessarie per la gestione del form di registrazione in "Regisrter.tsx"
  */
 function useRegisterController() {
 
@@ -64,7 +66,7 @@ function useRegisterController() {
             console.log(`${res}, dati del tuo nuovo utente: ${dataRegister.username} ${dataRegister.password}`);
             // pulizia degli errori e reindirizzamento alla homepage
             setDataError([]);
-            navigate("/");
+            navigate("/login");
 
             // gestione errori per la registrazione
         } catch (err) {
@@ -73,7 +75,7 @@ function useRegisterController() {
     };
 
 
-    // restituiamo gli state e le funzioni evocate dal form all'iterno del file Login.tsx
+    // restituiamo gli stati e le funzioni al componente Register.tsx
     return {
         dataRegister,
         dataError,

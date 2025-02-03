@@ -5,11 +5,10 @@ import { type Equipment } from './models/Equipment.model';
 
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * controller che gestisce il recupero e la gestione dello stato degli equipments della palestra
+ * effettua una richiesta HTTP GET per ottenere la lista degli equipment e gestisce eventuali errori durante la chiamata
+ * 
+ * @returns {{ equipments: Equipment[], error: string | null }} - restituisce lo stato degli equipment e un eventuale messaggio di errore.
  */
 function useAppController() {
 
@@ -34,7 +33,7 @@ function useAppController() {
 
 
 
-    // restituiamo gli state e le funzioni evocate dal form all'iterno del file Login.tsx
+    // restituzione degli stati degli equipment e degli errori
     return {
         equipments,
         error,
