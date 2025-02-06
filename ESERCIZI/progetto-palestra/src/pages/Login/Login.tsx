@@ -21,9 +21,9 @@ function Login() {
         <>
             <div className="w-full max-w-xl fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-gradient-to-r from-sky-500/20 to-indigo-500/10 p-12 rounded-lg shadow-lg">
 
-                <h1 className="text-4xl font-bold text-white text-center mb-6">Login</h1>
+                <h2 className="text-4xl font-fira font-bold text-white text-center mb-6">Login</h2>
 
-                {/* quando andiamo a submittare il login, eseguiamo la POST  */}
+                {/* quando andiamo a submittare il login, eseguiamo la POST */}
                 <form onSubmit={handleSubmit}>
                     {/* campo input Username*/}
                     <div className="mb-6">

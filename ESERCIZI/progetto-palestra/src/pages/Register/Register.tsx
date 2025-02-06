@@ -24,7 +24,7 @@ function Register() {
         <>
             <div className="w-full max-w-xl fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-gradient-to-r from-sky-500/20 to-indigo-500/10 p-12 rounded-lg shadow-lg">
 
-                <h1 className="text-4xl font-bold text-white text-center mb-6">Registrati</h1>
+                <h1 className="text-4xl font-fira font-bold text-white text-center mb-6">Registrati</h1>
 
                 {/* quando il form viene submittato, eseguiamo la POST passando i dati di username e passsword al servecies
                 andiamo a prevenire lo stato di default quando finito di compilare e reindiriziammo tramite useNavigate() da react-router alla pagina home */}

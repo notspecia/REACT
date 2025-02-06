@@ -426,6 +426,41 @@ li creiamo in una cartella apposita dentro src/ -> `hooks/`
 ---
 
 
+## Gestione di form dinamici
+
+Lavorare con i form sfruttiamo tutto ciò che abbiamo imparato fino ad ora. Ad esempio, prendiamo il progetto finale e mettiamo una modale form per aggiungere nuovi corsi per la palestra.
+
+### Step per creare un form dinamico:
+
+- **Creare un componente form**: 
+  - Aggiungiamo un evento di `onSubmit={handleSubmit}`, in cui una volta cliccato il bottone di invio, viene invocata la funzione `handleSubmit` che gestisce la logica di invio del form.
+
+- **Aggiungere i campi input**: 
+  - Inseriamo campi con le proprietà dei corsi della palestra (nome, descrizione, prezzo/m, ...).
+  - Creiamo un oggetto unico che contiene tutti i dati necessari per creare un corso.
+
+- **Gestire lo stato del form**: 
+  - Creiamo un oggetto `formData` che inizialmente è vuoto, ma con almeno i nomi delle proprietà del corso.
+  - Ogni volta che l'utente modifica un campo del form, aggiorniamo lo stato di `formData` con i nuovi valori degli input tramite il setter `setFormData`.
+
+- **Aggiungere il value agli input**:
+  - Aggiungiamo il `value` agli input per sincronizzarli con lo stato del form.
+  - Questo assicura che il valore mostrato nell'input sia sempre quello nello stato.
+  - Quando si modifica l'input, scatterà l'evento `handleChange`, che aggiornerà `formData`.
+
+  ```tsx
+  <input type="text" name="name" value={formData.name} onChange={handleChange} />
+  ```
+
+- **Gestire il cambiamento degli input**:
+  - Aggiungiamo un evento `onChange={handleChange}` agli input.
+  - Ogni volta che un utente modifica un input, viene invocata `handleChange`, che aggiorna lo stato del form con i nuovi valori.
+
+
+
+---
+
+
 
 ## React Routing
 
@@ -629,3 +664,19 @@ import PokeIcon from "../../assets/pokemonIcon.svg
 ## [Componenti già costruiti UX/UI](https://mui.com/material-ui/)
 
 ## [Host locale per la cartella dist/](https://app.netlify.com/drop)
+
+
+
+
+
+## recap finale di come si lavora su un progetto spa
+- *`raccolta di informazioni e requisiti`*: bisogna raccoglierle in maniera precisa e dettagliata, in modo da avere una visione chiara del progetto e delle sue caratteristiche, iniziamo a guardare il progetto e a dare un occhio, dobbiamo tenere conto del:
+  - *contesto?*: se non ci viene passato, andrebbe chiesto al project manager, sapere cosa si utilizza e che tecnlogia si va a riscontrare, sapere anche cosa fa quella applicazione (gestionale? landin page? e-commerce?), evitiamo troppe domande per il motivo di sovraccaricare la mente con troppe informazioni ancora inutili per qualcuno che non sa nemmeno come gira il progetto.
+  - *individuare problemi bloccanti*: faccio un paio di tentativi per provare a riparare il problema, se non riesco a risolverlo, lo segnalo al project manager e alzo la mano!
+  - *ispezionare i dev tools X network*: utilizzare i dev tools di chrome, sopratutto per i frontendisti che usano REACT ANGULAR, in cui le informazioni passano attraverso dev tools.
+
+- *`chiedere le metodologie di lavoro`*: iniziamo a chiedere le metodologie di lavoro, se è un progetto che si sta facendo in team o se è un progetto che si sta facendo da solo, quali sono i modi per sviluppare (AGILE, PR, VERSIONING PARTICOLARE) 
+
+## riassunto finale del corso di REACT 
+[swiper](https://swiperjs.com/): carosello libreria per potereì creali (il migliore secondo il prof)
+  - documentazione x REACT: https://swiperjs.com/react

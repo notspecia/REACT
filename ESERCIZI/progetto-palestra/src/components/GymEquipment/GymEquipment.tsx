@@ -22,16 +22,16 @@ function GymEquipment({ equipment, openModal }: { equipment: Equipment; openModa
 
     return (
         <>
-            <div className="equipment flex flex-col items-center w-120 shadow-2xl bg-gradient-to-r from-sky-500/30 to-indigo-500/30 text-slate-100 py-5 px-6 border border-white/30 rounded-lg">
-                <h2 className="text-4xl font-serif text-center font-bold mb-3">{equipment.name}</h2>
+            <div className="equipment flex flex-col items-center w-120 shadow-2xl bg-gradient-to-r from-sky-500/30 to-indigo-500/30 text-slate-100 py-5 px-6 rounded-lg">
+                <h2 className="text-4xl text-center font-fira font-bold mb-3">{equipment.name}</h2>
                 <div className="flex flex-row items-center mb-6">
-                    <h3 className="text-lg font-light text-cente">{equipment.claim}</h3>
-                    <svg dangerouslySetInnerHTML={{ __html: equipment.icon }} className="w-14 h-10"></svg>
+                    <h3 className="text-lg font-light font-roboto text-center">{equipment.claim}</h3>
+                    <svg dangerouslySetInnerHTML={{ __html: equipment.icon }} className="w-12 h-10"></svg>
                 </div>
                 <img src={equipment.image} alt="immagine strumento" className="w-10/12 h-72 rounded-xl mb-8" />
                 <div className="flex flex-row justify-between items-center w-full">
-                    <button onClick={handleClick} className="bg-pink-700 text-xl px-6 py-1 border-2 border-t-gray-300 rounded-md">Prenota!</button>
-                    <p>prezzo al minuto: {equipment.pricePerMinute.toFixed(2)}€</p>
+                    <button onClick={handleClick} className="bg-pink-700 font-fira text-lg px-6 py-1 rounded-md">Prenota!</button>
+                    <p className="font-roboto">prezzo al minuto: {equipment.pricePerMinute.toFixed(2)}€</p>
                 </div>
             </div >
         </>
