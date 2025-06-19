@@ -1,0 +1,22 @@
+ul li:nth-child(odd) {
+    background-color: rgb(241, 240, 240);
+}
+
+ul li {
+
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: orange;
+    }
+
+
+}
+
+h1 {
+    font-size: 80px;
+}
+
+img {
+    width: 120px;
+}

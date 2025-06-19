@@ -30,7 +30,6 @@ function useNavbarController() {
         navigate("/login"); // renderizziamoo l'utente alla pagina di login
     };
 
-
     // restituiamo gli state e le funzioni al componente "Navbar.tsx"
     return {
         isLoggedIn,

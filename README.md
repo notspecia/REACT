@@ -680,3 +680,178 @@ import PokeIcon from "../../assets/pokemonIcon.svg
 ## riassunto finale del corso di REACT 
 [swiper](https://swiperjs.com/): carosello libreria per potereì creali (il migliore secondo il prof)
   - documentazione x REACT: https://swiperjs.com/react
+
+
+# POSSIBILI DOMANDE E APPUTNI RECAP REACT
+Conversazione aperta. 1 messaggio letto.
+
+Vai ai contenuti
+Utilizzo di Gmail con gli screen reader
+3 di 13.140
+Linee guida esame react
+Posta in arrivo
+
+Nicolò Galizia <nicolo.galizia@edu.itspiemonte.it>
+Allegati
+mar 17 giu, 17:46 (2 giorni fa)
+a me
+
+
+
+--
+Galizia Nicolò
+Junior Web Developer 23/25
+ Un allegato
+  •  Scansione eseguita da Gmail
+## Vite react scaffold / setup
+
+`npm create vite`
+
+Config router
+
+farlo prima 
+`npm i react-router`
+
+--> App.tsx 
+
+``` tsx
+<BrowserRouter>
+	<Routers>
+		<Route path="/" element={<Home/>}/>
+	<Routers>
+<BrowserRouter>
+```
+
+## Pages / routes
+
+`src /routes / Home.tsx`
+`src /routes / Details.tsx`
+
+
+``` tsx
+const Home = () => {
+	return (
+		<>
+			<h2>Home<h2/>
+		</>
+ );
+};
+
+  
+
+export default List;
+```
+
+
+## FETCH API LIST
+
+	- documentazione > formato risposta
+	- typing essenziale > ListElement[]
+
+`const BASE_URL = "...";`
+
+``` tsx
+
+const BASE_URL = "...";
+
+export const getList = async () => {
+const res = await fetch (`${BASE_URL}/...`);
+
+const data = await res.json; // per il JSON senza tipizzazione
+const data: listType[] = await res.json; // per il JSON con tipizzazione                                                                                                                                                                                                                                                                                                                                  
+const data = await res.text; // per il Testo
+
+if(!res.ok) throw new Error ("")
+
+return data,
+
+}
+
+```
+
+## custom hook 
+
+``` tsx
+
+const useListApi = () => {
+	const [result, setResult] = useState<listType[]>([]);
+	const [loading, setLoading] = useState<boolean>(false);
+
+
+	useEffect(()=>{
+		setLoading(true);
+		getList().then(data=> {
+		setResult(data)})
+		.finally(() => {loading(false)})
+	}, [])
+
+	return {result, loading}
+}
+
+export defoult useListApi;
+
+```
+
+``` tsx
+
+const {result, loading} = useListApi();
+const {sendData } = useListUpdateApi(); // sendData(payload)
+
+```
+
+``` tsx
+
+const useListApi = () => {
+	const [loading, setLoading] = useState<boolean>(false);
+
+	const sendData = async (payload:ListType) => {
+	const res = await fetch ("..."), 
+	body: }
+
+
+	return {loading, sendData}
+}
+
+export defoult useListApi;
+
+```
+
+## ROTTE DINAMICHE (NAVIGATE)
+
+``` tsx
+<BrowserRouter>
+	<Routers>
+		<Route path="/" element={<Home/>}/>
+		<Route path="/:id" element={<Detail/>}/>   <-------
+	<Routers>
+<BrowserRouter>
+```
+
+``` tsx
+const Detail = () => {
+const {id} = useParams();
+const navigate = useNavigate() ---> ("/")
+	return (
+		<>
+	--> <Link to = ${`/${id`}
+			<h2>Detail<h2/>
+		</>
+ );
+};
+export default Detail;
+```
+
+codice typescipt da veirficare e correggere
+sintassi jsx
+come funzionanole dipendenze delle useEffect
+gestioni delle classi
+differenza tra use state e use effect
+sintassi dell onChenge
+
+FUNZIONE DI UNA PAGINA WEB 
+METODI HTTP
+CLIENT SERVER
+FRAMEWORK VS LIBRERIA
+COSE UN DOM
+Linee guida esame.md
+Visualizzazione di Linee guida esame.md.
