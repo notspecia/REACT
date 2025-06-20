@@ -9,7 +9,8 @@ import NavBar from './components/NavBar/NavBar' // importiamo anche il COMPONENT
 // questa funziona RITORNA dell'html, ma in realtà sotto banco va a utilizzare il document.getElement.... react prende tutta sta roba e la manda a schermo
 function App() {
 
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [food, setFood] = useState<string[]>(["banana"]);
 
   /* scriviamo dell'html ma in realtà poi viene costruito come TYPESCRIPT */
   return (
@@ -50,6 +51,17 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
+      <button onClick={() => setFood([...food, "mela"])}>
+        aggiungi food "mela"
+      </button>
+
+      <ul>
+        {food.map((f, i) => (
+          <li key={i}>
+            {f}
+          </li>
+        ))}
+      </ul>
     </>
   )
 }

@@ -5,6 +5,12 @@ import Link from "../Link/Link"; // importazione del componente <Link> dal file 
 
 function NavBar() {
 
+    const styleObject = {
+        color: "red",
+        backgroundColor: "blue",
+        fontFamily: "Arial"
+    }
+
     // VARIABILE DINAMICA da utilizzare nelle {} all'interno dei tag HTML per creare codice JS
     const today: Date = new Date();
     const logo: string = "/vite.svg";
@@ -12,7 +18,7 @@ function NavBar() {
     // ritorniamo il jsx da poi integrare dentro <App> che è il component principale, usiamo anche delle varibile per comporre il tutto
     return (
         <>
-            <h4 style={{ fontFamily: "Verdana" }}>ciao oggi è il {today.toDateString()} e sono le {today.getHours()} </h4>
+            <h4 style={styleObject}>ciao oggi è il {today.toDateString()} e sono le {today.getHours()} </h4>
             <img src={logo} alt="logo vite" />
             <ul>
                 <li><Link></Link></li>

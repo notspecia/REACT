@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import useAppController from './useAppController';
 
 // importazione delle rotte da inserire come "element" nelle Routes di react-router
@@ -24,8 +25,16 @@ function App() {
           <Route path="*" element={<Notfound />} />
         </Routes>
       </Router >
+      <ToastContainer autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }
 
 export default App;
+

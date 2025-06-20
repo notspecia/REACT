@@ -683,26 +683,6 @@ import PokeIcon from "../../assets/pokemonIcon.svg
 
 
 # POSSIBILI DOMANDE E APPUTNI RECAP REACT
-Conversazione aperta. 1 messaggio letto.
-
-Vai ai contenuti
-Utilizzo di Gmail con gli screen reader
-3 di 13.140
-Linee guida esame react
-Posta in arrivo
-
-Nicolò Galizia <nicolo.galizia@edu.itspiemonte.it>
-Allegati
-mar 17 giu, 17:46 (2 giorni fa)
-a me
-
-
-
---
-Galizia Nicolò
-Junior Web Developer 23/25
- Un allegato
-  •  Scansione eseguita da Gmail
 ## Vite react scaffold / setup
 
 `npm create vite`
@@ -788,7 +768,7 @@ const useListApi = () => {
 	return {result, loading}
 }
 
-export defoult useListApi;
+export default useListApi;
 
 ```
 
@@ -855,3 +835,45 @@ FRAMEWORK VS LIBRERIA
 COSE UN DOM
 Linee guida esame.md
 Visualizzazione di Linee guida esame.md.
+
+
+
+## REACT TOASTIFY
+```tsx
+import { toast } from "react-toastify";
+
+import useHomeController from "./useHomeController";
+import './Home.css'
+
+const resolveAfter3Sec = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        if (Math.random() > 0.5) {
+            resolve();
+        } else {
+            reject();
+        }
+    }, 2000);
+})
+
+
+function Home() {
+
+    const { } = useHomeController();
+
+    return (
+        <>
+            <h1>ciao</h1>
+            <button className="btn btn-success" onClick={() => {
+                toast.promise(resolveAfter3Sec, {
+                    pending: "in corso attendere...",
+                    success: "grande!",
+                    error: "male male... riprova"
+                })
+            }}>prova</button>
+        </>
+    );
+}
+
+
+export default Home;
+```
