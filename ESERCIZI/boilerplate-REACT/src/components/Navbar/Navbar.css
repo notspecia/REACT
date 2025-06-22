@@ -1,0 +1,12 @@
+.navbar {
+    background: transparent;
+    box-shadow: none;
+}
+
+img {
+    width: 70px;
+}
+
+ul.navbar-nav li {
+    padding: 0 10px;
+}

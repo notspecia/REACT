@@ -1,4 +1,3 @@
-import CreateEquipment from "../../components/CreateEquipment/CreateEquipment";
 import GymEquipmentsList from "../../components/GymEquimentsList/GymEquipmentsList";
 import { type Equipment } from "../../models/Equipment.model";
 
@@ -25,17 +24,11 @@ function Home({ equipments, error }: { equipments: Equipment[], error: string | 
             {/* Hero della home con un titolo e un bottone per iniziare a navigare tra gli strumenti da palestra */}
             <div className="flex items-center h-screen bg-gray-900 text-white text-center py-16 mt-5">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-5xl font-fira font-bold leading-tight">Benvenuti in angFitness!</h1>
+                    <h1 className="text-5xl font-bold leading-tight">Benvenuti in angFitness!</h1>
                     <p className="text-xl mt-3 mb-5">Scopri i nostri corsi e inizia il tuo percorso verso il benessere fisico.</p>
                     <a href="#list" className="inline-block mt-4 px-10 py-3 bg-blue-600 hover:bg-blue-700 text-lg font-medium rounded-lg transition duration-300">Esplora i nostri corsi!</a>
                 </div>
             </div>
-
-            {/* carosello immagini componente creato tramite libreria REACT swiper */}
-            {/* <Carosello /> */}
-
-            {/* bottone apre modale che permette la creazione di un nuovo corso (si rimuoverà allo smontaggio del componente) */}
-            <CreateEquipment equipments={equipments} />
 
             {/* 
             - in caso il value di "errore" sia != da null andrà a reinidirizzare la lista degli equipments,

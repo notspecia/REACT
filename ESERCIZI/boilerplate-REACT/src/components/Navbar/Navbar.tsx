@@ -5,9 +5,12 @@ import './Navbar.css';
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-sm bg-body-tertiary">
+        <nav className="navbar navbar-expand-sm mb-5">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">MyApp</NavLink>
+                <NavLink className="navbar-brand me-5" to="/">
+                    <img src="https://cdn.worldvectorlogo.com/logos/lorem-lorem-1.svg" alt="logo myapp" />
+                    <span className="fs-3 fw-bold">MyApp</span>
+                </NavLink>
                 {/* menu per dispositivi mobile */}
                 <button
                     className="navbar-toggler"
@@ -33,9 +36,14 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <span className="nav-link disabled" aria-disabled="true">
-                                Disabled
-                            </span>
+                            <Link className="nav-link" to="/about">
+                                About
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/portofolio">
+                                Portofolio
+                            </Link>
                         </li>
                     </ul>
                 </div>

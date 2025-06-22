@@ -12,7 +12,7 @@ import { type Equipment } from "../../models/Equipment.model";
  * @param {TipoInput2} NomeInput2 - DescrizioneInput2
  * @returns {TipoOutput} - DescrizioneOutput
  */
-function useBookingEquipmentController({ equipment }: { equipment: Equipment }) {
+function useReservationEquipmentController({ equipment }: { equipment: Equipment }) {
 
     //* stato per tenere traccia dei cambiamenti dei minuti di utilizzo inseriti dall'utente
     const [minutes, setMinutes] = useState(0);
@@ -79,4 +79,4 @@ function useBookingEquipmentController({ equipment }: { equipment: Equipment }) 
 }
 
 
-export default useBookingEquipmentController;
+export default useReservationEquipmentController;

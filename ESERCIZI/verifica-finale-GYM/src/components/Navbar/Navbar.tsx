@@ -35,7 +35,7 @@ function NavBar() {
                         <img src="/gym-icon.png" alt="logo gym" />
                     </div>
                     {/* menu di navigazione per dispositivi desktop */}
-                    <ul className="hidden md:flex items-center space-x-14 text-white font-fira text-lg">
+                    <ul className="hidden md:flex items-center space-x-14 text-white text-xl">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/equipments-booked">Equipments Booked</Link></li>
                         {!isLoggedIn && (
@@ -62,7 +62,7 @@ function NavBar() {
                 {/* ***MENU DI NAVIGAZIONE MOBILE***
                 menu hamburger renderizzato solo se isOpen è true (quando viene cliccato il bottone del menu) */}
                 {isOpen && (
-                    <ul className="md:hidden justify-center bg-gradient-to-r from-sky-500/10 to-indigo-500/20 text-white font-fira text-lg px-4 py-4 space-y-6">
+                    <ul className="md:hidden justify-center bg-gradient-to-r from-sky-500/10 to-indigo-500/20 text-white text-lg px-4 py-4 space-y-6">
                         <li><Link to="/" className="block">Home</Link></li>
                         <li><Link to="/equipments-booked" className="block">Equipments Booked</Link></li>
                         {!isLoggedIn && (

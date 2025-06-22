@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffffff 30%, #d6e0ff 100%);
+}

@@ -34,6 +34,7 @@ function GymEquipmentUserList({ userEquipments }: { userEquipments: EquipmentUse
 
     return (
         <>
+
             {/* 
             in caso il value di "errore" sia != da null andrà a reinidirizzare la lista degli equipments,
             andiamo a mostrare come elmento principale il componente che riceve gli equipments, che verranno
@@ -43,8 +44,8 @@ function GymEquipmentUserList({ userEquipments }: { userEquipments: EquipmentUse
                 <h1 className="text-xl text-red-700 text-center mt-48">{error}</h1>
             ) : (
                 <div className="flex flex-wrap justify-around gap-y-20 py-10 mt-48">
-                    {filteredEquipments.map((equipmentUser) => (
-                        <GymEquipmentUser key={equipmentUser.id} equipmentUser={equipmentUser} />
+                    {filteredEquipments.map((equipmentUser, index) => (
+                        <GymEquipmentUser key={index} equipmentUser={equipmentUser} />
                     ))}
                 </div>
             )}

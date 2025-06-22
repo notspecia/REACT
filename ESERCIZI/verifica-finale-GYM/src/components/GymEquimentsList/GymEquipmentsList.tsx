@@ -24,8 +24,8 @@ function GymEquipmentsList({ equipments }: { equipments: Equipment[] }) {
             passiamo come props anche una callback function che permette di passare dati e informazioni (in questo caso aggiornamento
             dello stato di "selectedEquipment", che cambia da "null" all'equipment selezionato dall'utente */}
             <div id="list" className="flex flex-wrap justify-around gap-y-20 py-10 pt-32">
-                {equipments.map((equipment) => (
-                    <GymEquipment key={equipment.id} equipment={equipment} openModal={openModal} />
+                {equipments.map((equipment, index) => (
+                    <GymEquipment key={index} equipment={equipment} openModal={openModal} />
                 ))}
             </div>
 

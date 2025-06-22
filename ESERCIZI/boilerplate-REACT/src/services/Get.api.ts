@@ -1,4 +1,4 @@
-import { type Equipment } from "../models/Equipment.model";
+import { type some } from "../models/Equipment.model";
 
 
 /**
@@ -8,10 +8,10 @@ import { type Equipment } from "../models/Equipment.model";
  * 
  * 
  * @param {string} path - URL dell'endpoint API per il recupero.
- * @returns {Promise<Equipment[]>} -  restituisce un a
+ * @returns {Promise<some[]>} -  restituisce un a
  * @throws {Error} - Se la richiesta non va a buon fine.
  */
-export const GetSomething = async (path: string): Promise<Equipment[]> => {
+export const GetSomething = async (path: string): Promise<some[]> => {
 
     const response = await fetch(path, {
         method: "GET",

@@ -792,7 +792,7 @@ const useListApi = () => {
 	return {loading, sendData}
 }
 
-export defoult useListApi;
+export default useListApi;
 
 ```
 

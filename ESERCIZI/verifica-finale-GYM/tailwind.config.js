@@ -6,10 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        fira: ['Fira Sans', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif'],
-      },
       spacing: {
         '100': '24rem',
         '110': '28rem',
