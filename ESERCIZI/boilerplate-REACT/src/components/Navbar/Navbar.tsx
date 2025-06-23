@@ -5,10 +5,10 @@ import './Navbar.css';
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-sm mb-5">
+        <nav className="navbar navbar-expand-sm position-fixed w-100 z-3 ">
             <div className="container-fluid">
-                <NavLink className="navbar-brand me-5" to="/">
-                    <img src="https://cdn.worldvectorlogo.com/logos/lorem-lorem-1.svg" alt="logo myapp" />
+                <NavLink className="navbar-brand me-5 d-flex align-items-center" to="/">
+                    <img src="/logo-demo.png" alt="logo myapp" />
                     <span className="fs-3 fw-bold">MyApp</span>
                 </NavLink>
                 {/* menu per dispositivi mobile */}
@@ -26,24 +26,24 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">
+                            <NavLink className="nav-link" to="/">
                                 Home
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/price">
+                            <NavLink className="nav-link" to="/price">
                                 Price
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about">
+                            <NavLink className="nav-link" to="/about">
                                 About
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/portofolio">
+                            <NavLink className="nav-link" to="/portofolio">
                                 Portofolio
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>

@@ -5,5 +5,9 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffffff 30%, #d6e0ff 100%);
+    background: linear-gradient(120deg, #ffffff 70%, #a3bafe 90%);
+}
+
+main {
+    padding-top: 150px;
 }

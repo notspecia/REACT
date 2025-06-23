@@ -19,15 +19,17 @@ function App() {
       <Router>
         {/* wrap dell'applicazione per abilitare il routing tra le pagine della SPA tramite <Link to="path"/>*/}
         <Navbar />
-        <div className='container'>
+        <main className='container'>
           <Routes>
             {/* route principale Home (montata all'avvio dell'applicazione)*/}
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
-        </div>
+        </main>
       </Router >
-      <ToastContainer autoClose={1000}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         pauseOnFocusLoss
