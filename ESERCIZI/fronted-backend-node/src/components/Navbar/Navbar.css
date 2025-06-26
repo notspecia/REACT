@@ -1,0 +1,27 @@
+.navbar {
+    background-color: rgba(255, 255, 255, 0.35);
+    /* filtro per blurrare testo sotto la navabr (+safari) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 3px 15px #362ed3;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+img {
+    width: 60px;
+}
+
+
+ul.navbar-nav li {
+    font-size: 17px;
+    padding: 5px 12px;
+}
+
+/* link attivo syle */
+.nav-link.active {
+    color: #362ed3 !important;
+    font-weight: bold;
+    /* ad esempio rosso Bootstrap */
+    border-bottom: 2px solid #362ed3;
+}

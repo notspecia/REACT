@@ -1,0 +1,31 @@
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+}
+
+.alert-card-modern {
+    background: linear-gradient(135deg, #e7f1ff, #f4f9ff);
+}
+
+.alert-card-modern hr {
+    border-top: 2px solid #b0cde9;
+    width: 75%;
+    margin: 20px auto;
+}
+
+
+.alert-card-modern p,
+.alert-card-modern span {
+    color: #234c74;
+}
+
+
+.alert-card-modern h2 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    word-spacing: 2px;
+}
