@@ -9,7 +9,7 @@ interface User {
 function useHomeController() {
 
     // stato per registrare la stringa da compilare con l'input per aggiungere utente
-    const [userList, setUserList] = useState<User[]>([]);
+    const [userList, setUserList] = useState<User[] | undefined>(undefined);
     const [username, setUsername] = useState<string>("");
 
 
@@ -53,13 +53,31 @@ function useHomeController() {
 
             // aggiorniamo la lista con il ritorno della risposta della POST con il nuovo utente l'array degli utenti
             const newUser = await res.json();
-            setUserList([...userList, newUser]);
+            setUserList(prev => [...prev, newUser]);
             // reset del campo field input utente
             setUsername("");
             toast.success("Utente aggiunto con successo!");
 
-        } catch (error) {
+        } catch {
             toast.error("errore nel tentativo di aggiungere utente! riprova!")
+        }
+    }
+
+    // funzione handle per cancellare uno specifico utente ricvendo il suo ID
+    const handleDelete = async (user: User) => {
+        try {
+            const res = await fetch(`http://localhost:3000/api/utenti/${user.id}`,
+                {
+                    method: "DELETE"
+                });
+            if (res.ok) {
+                setUserList(prev => prev?.filter(u => u.id !== user.id));
+                toast.success(`Utente eliminato con successo`);
+            } else {
+                toast.error("Errore durante l'eliminazione dell'utente.");
+            }
+        } catch {
+            toast.error("Errore di rete durante la cancellazione.");
         }
     }
 
@@ -69,7 +87,8 @@ function useHomeController() {
         userList,
         username,
         handleChange,
-        handleAddUser
+        handleAddUser,
+        handleDelete
     }
 }
 

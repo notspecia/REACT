@@ -33,6 +33,16 @@ app.post('/api/utenti', (req, res) => {
     });
 });
 
+// DELETE - Delete di un utente
+app.delete('/api/utenti/:id', async (req, res) => {
+    const { id } = req.params; // prendiamo i parametri presi dall'url (ID user)
+    console.log("utente cancellato")
+    await db.run("DELETE FROM utenti WHERE id = ?", id);
+    res.status(204).end();
+});
+
+
+
 app.listen(3000, () => {
     console.log('✅ Backend attivo su http://localhost:3000');
 });

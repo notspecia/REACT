@@ -35,7 +35,7 @@ function useLoginController() {
     // al cambiamento degli input USERNAME&PASSWORD, settiamo i nuovi dati tramite setFormData() dinamicamente da poi passare alla fetch POST all'interno del body in JSON
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target; // ricava il nome del campo (username/password) e il valore inserito
-        setDataLogin({ ...dataLogin, [name]: value });
+        setDataLogin(prev => ({ ...prev, [name]: value }));
     };
 
 

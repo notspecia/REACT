@@ -5,6 +5,7 @@ import useAppController from './useAppController';
 // importazione dei componenti pagine da inserire come Rotte
 import Navbar from './components/Navbar/Navbar';
 import Home from './views/Home/Home';
+import Form from './views/Form/Form';
 import Notfound from './views/Notfound/Notfound';
 
 
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             {/* route principale Home (montata all'avvio dell'applicazione)*/}
             <Route path="/" element={<Home />} />
+            <Route path='form/' element={<Form />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </main>
