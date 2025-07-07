@@ -7,23 +7,17 @@ function useHomeController() {
     // stato per registrare la visibilità della modale
     const [showModal, setShowModal] = useState(false);
 
-    // funzioni da passare come callback per cambiare lo stato della visibilità modale
-    const openModal = () => {
-        setShowModal(true);
-    }
-
-    const closeModal = () => {
-        setShowModal(false);
+    // funzione da passare come callback per cambiare lo stato della visibilità modale
+    const handleVisibilityModal = (show: boolean) => {
+        setShowModal(show);
     }
 
     // restituiamo gli stati e le funzioni al componente view "Home.tsx"
     return {
         showModal,
-        closeModal,
-        openModal
+        handleVisibilityModal
     }
 }
-
 
 
 export default useHomeController;

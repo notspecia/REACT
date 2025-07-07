@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './views/Home/Home';
 import Form from './views/Form/Form';
 import Notfound from './views/Notfound/Notfound';
+import Detail from './views/Detail/Detail';
 
 
 
@@ -25,10 +26,13 @@ function App() {
             {/* route principale Home (montata all'avvio dell'applicazione)*/}
             <Route path="/" element={<Home />} />
             <Route path='form/' element={<Form />} />
+            {/* route di boileplate per una pagina dettaglio di... */}
+            <Route path="/detail/:id" element={<Detail />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </main>
       </Router >
+      {/* import globale nell'app per utilizzare notifiche TOAST */}
       <ToastContainer
         position="bottom-right"
         autoClose={4000}

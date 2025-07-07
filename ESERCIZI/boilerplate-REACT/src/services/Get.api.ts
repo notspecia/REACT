@@ -11,7 +11,7 @@ import { type some } from "../models/Equipment.model";
  * @returns {Promise<some[]>} -  restituisce un a
  * @throws {Error} - Se la richiesta non va a buon fine.
  */
-export const GetSomething = async (path: string): Promise<some[]> => {
+export const GetSomething = async (path: string, id: string): Promise<some[]> => {
 
     const response = await fetch(path, {
         method: "GET",

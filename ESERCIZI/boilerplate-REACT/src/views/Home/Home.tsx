@@ -7,7 +7,7 @@ import Modal from "../../components/Modal/Modal";
 
 function Home() {
 
-    const { showModal, openModal, closeModal } = useHomeController();
+    const { showModal, handleVisibilityModal } = useHomeController();
 
     return (
         <>
@@ -30,14 +30,13 @@ function Home() {
 
             {/* componente card da ciclare contenente evento per aprire aìeventuali modali (ESEMPIO FREATELLI COMPONENTI) */}
             <div className="row">
-                <Card openModal={openModal} />
-                <Card openModal={openModal} />
+                <Card handleVisibilityModal={handleVisibilityModal} />
             </div>
 
 
             {/* componente demo MODAL da ciclare ed utilizzare (collegato a un compnente fretello il bottone che la apre) */}
             {/* CASO MAI CILCASSI + ROBE DELLE CARD, CREARE UN "selectedElement stato" gurdate TEST-FINALE-PALESTRA */}
-            <Modal show={showModal} closeModal={closeModal} />
+            <Modal show={showModal} handleVisibilityModal={handleVisibilityModal} />
         </>
     )
 }
