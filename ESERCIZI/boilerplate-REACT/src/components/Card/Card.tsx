@@ -25,6 +25,9 @@ function Card({ handleVisibilityModal }) {
                             <button className="btn btn-primary" onClick={() => handleVisibilityModal(true)}>
                                 Apri Modale
                             </button>
+                            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                Apri Modale 1
+                            </button>
                         </div>
                     </div>
                 </div>

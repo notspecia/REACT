@@ -11,7 +11,7 @@ function Navbar() {
                     <img src="/logo-demo.png" alt="logo myapp" />
                     <span className="fs-3 fw-bold">MyApp</span>
                 </NavLink>
-                {/* menu per dispositivi mobile */}
+                {/* bottone per mobile */}
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -23,6 +23,8 @@ function Navbar() {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
+
+                {/* menu navbar */}
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">

@@ -37,6 +37,8 @@ function useFormController() {
         const { name, value, type, checked } = e.target;
         // gestione avanzata anche per le check e possibili radio buttons
         setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+        // reset dei campi errore di tutto quando si modifica il form
+        setErrors(null);
     };
 
     // funzione boilerplate di prova da inovacre per validare i campi dello stato formData
