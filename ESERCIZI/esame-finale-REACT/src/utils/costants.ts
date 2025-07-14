@@ -1,0 +1,1 @@
+export const BASE_URL: string = "https://d1r0oonpv5yocu.cloudfront.net/api";
