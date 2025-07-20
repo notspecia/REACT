@@ -1,0 +1,34 @@
+.riepilogo-ordine {
+    width: 35%;
+    color: #fff;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 25px;
+    border: 1px solid #ccc;
+    animation: slideUp 0.4s ease forwards;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.riepilogo-ordine .toggle {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    cursor: pointer;
+}
+
+
+
+/* animazione slide up per l'apertura del riepilogo ordine (primo montaggio componente + se riapro la tendina grossa) */
+@keyframes slideUp {
+    from {
+        transform: translate(0, 100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}

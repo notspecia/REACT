@@ -49,7 +49,7 @@ function Home() {
                             type="submit"
                             className="btn btn-danger btn-lg w-100 fw-bold"
                         >
-                            Prenota il Tavolo
+                            Prenota il Tavolo<i className="bi bi-fork-knife ms-2"></i>
                         </button>
                     </div>
                 </form>

@@ -18,9 +18,9 @@ function useListaPizzeController() {
     //* stato per tenere traccia delle quantità ordinate per ogni pizza, passando l'id delle pizze selezionate da ordinare
     const [ordini, setOrdini] = useState<{ [pizzaId: string]: number }>({});
 
+    //prendiamo l'id della prenotazione del tavolo dalla rotta, per poterlo usare nella POST delle pizze ordinate
     const { idPrenotazione } = useParams();
     const navigate = useNavigate();
-
 
     // -----------------------
 
@@ -39,7 +39,6 @@ function useListaPizzeController() {
         }, 500);
 
         return () => clearTimeout(timerID);
-
     }, []);
 
 
@@ -88,6 +87,11 @@ function useListaPizzeController() {
         }
     };
 
+    // funzione per annullare l'ordinazione, resetta gli ordini e reindirizza alla pagina principale
+    const handleCancelOrdination = () => {
+        setOrdini({});
+        toast.info("Ordine annullato, puoi continuare a ordinare!");
+    }
 
 
     // restituzione degli stati della lista pizze e funzioni di handler
@@ -100,7 +104,7 @@ function useListaPizzeController() {
         prezzoTotale,
         aggiornaQuantita,
         handleOrdination,
-        navigate
+        handleCancelOrdination
     }
 }
 

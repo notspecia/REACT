@@ -1,6 +1,5 @@
 import type { Pizza as PizzaType } from "../../models/pizzeria.model";
 import usePizzaController from "./usePizzaController";
-import { useNavigate } from "react-router-dom";
 import "./Pizza.css";
 
 
@@ -15,17 +14,13 @@ function Pizza({
     aggiornaQuantita: (pizzaId: number, quantità: number) => void;
 }) {
 
-    // permette navigazione dopo aver confermato prenotazione del numero del tavolo
-    const navigate = useNavigate();
-
-
-    const { mostraSelettore, setMostraSelettore, handleShowSelettore, } = usePizzaController();
-
+    // utilizzo del controller hook per gestire lo stato e le funzioni
+    const { mostraSelettore, setMostraSelettore, handleShowSelettore, handleGoToPizzaDetail } = usePizzaController();
 
     return (
         <div className="card shadow-sm">
             {/* al click su immagine, redirect al dettaglio della pizza */}
-            <img onClick={() => navigate(`/${pizza.id}/pizza`)}
+            <img onClick={() => handleGoToPizzaDetail(pizza)}
                 src={pizza.image}
                 className="card-img-top"
             />
@@ -89,8 +84,6 @@ function Pizza({
         </div>
     );
 }
-
-
 
 
 export default Pizza;
